@@ -140,10 +140,12 @@ class AuthenScreen extends StatelessWidget {
             ),
             SizedBox(height: Reponsive.height * 0.02),
             ElevatedButton(
-              onPressed: () {
-                if (_controller.withLogin() == 2) {
+              onPressed: () async {
+                if (await _controller.withLogin() == 2) {
                   Fluttertoast.showToast(
-                      msg: "Tài khoản hoặc mật khẩu không chính xác");
+                      msg: "Tài khoản hoặc mật khẩu không chính xác!");
+                } else if (await _controller.withLogin() == 1) {
+                  Fluttertoast.showToast(msg: "Vui lòng xác thực tài khoản!");
                 }
               },
               style: ElevatedButton.styleFrom(

@@ -30,6 +30,7 @@ class AuthController extends GetxController {
       try {
         String code = await _userUsecaseImpl.userLogin(
             email: userName.text, password: password.text);
+
         return int.tryParse(code);
       } catch (exception) {
         print(exception.toString());

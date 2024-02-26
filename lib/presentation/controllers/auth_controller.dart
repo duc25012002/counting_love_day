@@ -1,3 +1,4 @@
+import 'package:counting_love_day/domain/usecase/user_usecase.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -9,6 +10,9 @@ class AuthController extends GetxController {
   FocusNode focusNode2 = FocusNode();
   RxBool isFocus1 = false.obs;
   RxBool isFocus2 = false.obs;
+  final UserUsecaseImpl _userUsecaseImpl;
+
+  AuthController(this._userUsecaseImpl);
 
   @override
   void onInit() {
@@ -21,12 +25,23 @@ class AuthController extends GetxController {
     });
   }
 
-  withLogin() {}
+  withLogin() async {
+    if (userName.text.isNotEmpty && password.text.isNotEmpty) {
+      try {
+        String code = await _userUsecaseImpl.userLogin(
+            email: userName.text, password: password.text);
+        return int.tryParse(code);
+      } catch (exception) {
+        print(exception.toString());
+      }
+    }
+  }
 
   @override
   void dispose() {
     userName.dispose();
     password.dispose();
+    focusNode1.dispose();
     focusNode2.dispose();
     super.dispose();
   }

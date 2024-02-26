@@ -8,6 +8,9 @@ class ManageDependencies extends Bindings {
   }
 
   void _initNonAsync() {
-    Get.lazyPut(tag: "auth_controller", () => AuthController(), fenix: true);
+    Get.lazyPut(
+        tag: "auth_controller",
+        () => AuthController(Get.find(tag: "user_login")),
+        fenix: true);
   }
 }

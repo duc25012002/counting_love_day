@@ -1,10 +1,11 @@
 // ignore_for_file: no_leading_underscores_for_local_identifiers, unrelated_type_equality_checks, non_constant_identifier_names
 
-import 'package:counting_love_day/app/config/app_color.dart';
-import 'package:counting_love_day/app/config/reponsive.dart';
+import 'package:counting_love_day/app/configs/app_color.dart';
+import 'package:counting_love_day/app/configs/reponsive.dart';
 import 'package:counting_love_day/presentation/components/input.dart';
 import 'package:counting_love_day/presentation/controllers/auth_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 
 class AuthenScreen extends StatelessWidget {
@@ -126,6 +127,7 @@ class AuthenScreen extends StatelessWidget {
               _controller,
               "User name",
               _controller.isFocus1,
+              TextInputType.emailAddress,
             ),
             SizedBox(height: Reponsive.height * 0.01),
             Input(
@@ -134,10 +136,16 @@ class AuthenScreen extends StatelessWidget {
               _controller,
               "Password",
               _controller.isFocus2,
+              TextInputType.text,
             ),
             SizedBox(height: Reponsive.height * 0.02),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                if (_controller.withLogin() == 2) {
+                  Fluttertoast.showToast(
+                      msg: "Tài khoản hoặc mật khẩu không chính xác");
+                }
+              },
               style: ElevatedButton.styleFrom(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(5.0),
@@ -160,12 +168,13 @@ class AuthenScreen extends StatelessWidget {
 class PaintLine extends CustomPainter {
   final double screenHeight;
   PaintLine(this.screenHeight);
-  
+
   @override
   void paint(Canvas canvas, Size size) {
     final paintLine1 = Paint()
       ..style = PaintingStyle.fill
       ..color = AppColor.secondary;
+
     final paintLine2 = Paint()
       ..style = PaintingStyle.fill
       ..color = AppColor.primary;

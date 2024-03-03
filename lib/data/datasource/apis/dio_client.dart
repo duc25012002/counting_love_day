@@ -2,6 +2,7 @@
 import 'package:dio/dio.dart';
 import 'package:xml/xml.dart';
 import '../../../app/configs/api_config.dart' as url;
+import '../../../app/configs/api_config.dart';
 
 class DioClient {
   DioClient._();
@@ -60,18 +61,14 @@ class DioClient {
         onReceiveProgress: onReceiveProgress,
       );
       if (response.statusCode == 200 || response.statusCode == 201) {
-        if (path == "/login") {
+        if (path == login || path == register || path == checkMail) {
           final document = XmlDocument.parse(response.data);
           final List<XmlElement> codeList =
               document.findAllElements('code').toList();
           if (codeList.isNotEmpty) {
             final XmlElement dataElement = codeList.first;
-
             // Lấy dữ liệu bên trong node <data>
             final String data = dataElement.text;
-
-            // Sử dụng dữ liệu
-
             return data;
           }
         } else {

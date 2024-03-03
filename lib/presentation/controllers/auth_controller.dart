@@ -3,25 +3,22 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class AuthController extends GetxController {
+  final UserUsecaseImpl _userUsecaseImpl = Get.find(tag: "user_login");
   final formKey = GlobalKey<FormState>();
+  TextEditingController email = TextEditingController();
   TextEditingController userName = TextEditingController();
   TextEditingController password = TextEditingController();
-  FocusNode focusNode1 = FocusNode();
-  FocusNode focusNode2 = FocusNode();
-  RxBool isFocus1 = false.obs;
-  RxBool isFocus2 = false.obs;
-  final UserUsecaseImpl _userUsecaseImpl;
-
-  AuthController(this._userUsecaseImpl);
+  TextEditingController passwordConfirm = TextEditingController();
+  FocusNode? focusNode;
+  RxBool isFocus = false.obs;
+  RxBool nextPage = false.obs;
+  RxInt current = 0.obs;
 
   @override
   void onInit() {
     super.onInit();
-    focusNode1.addListener(() {
-      isFocus1.value = focusNode1.hasFocus;
-    });
-    focusNode2.addListener(() {
-      isFocus2.value = focusNode2.hasFocus;
+    focusNode?.addListener(() {
+      isFocus.value = focusNode!.hasFocus;
     });
   }
 
@@ -29,8 +26,36 @@ class AuthController extends GetxController {
     if (userName.text.isNotEmpty && password.text.isNotEmpty) {
       try {
         String code = await _userUsecaseImpl.userLogin(
-            email: userName.text, password: password.text);
+          email: userName.text,
+          password: password.text,
+        );
+        return int.tryParse(code);
+      } catch (exception) {
+        print(exception.toString());
+      }
+    } else {}
+  }
 
+  withRegister() async {
+    if (email.text.isNotEmpty && userName.text.isNotEmpty) {
+      try {
+        String code = await _userUsecaseImpl.userRegister(
+          email: email.text,
+          password: password.text,
+          passwordConfirmation: passwordConfirm.text,
+          userName: userName.text,
+        );
+        return int.tryParse(code);
+      } catch (exception) {
+        print(exception.toString());
+      }
+    }
+  }
+
+  withCheckMail() async {
+    if (email.text.isNotEmpty) {
+      try {
+        String code = await _userUsecaseImpl.checkEmail(email: email.text);
         return int.tryParse(code);
       } catch (exception) {
         print(exception.toString());
@@ -42,8 +67,9 @@ class AuthController extends GetxController {
   void dispose() {
     userName.dispose();
     password.dispose();
-    focusNode1.dispose();
-    focusNode2.dispose();
+    email.dispose();
+    passwordConfirm.dispose();
+    focusNode?.dispose();
     super.dispose();
   }
 }

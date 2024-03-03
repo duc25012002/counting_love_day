@@ -12,7 +12,7 @@ import 'package:flutter/foundation.dart'
 /// // ...
 /// await Firebase.initializeApp(
 ///   options: DefaultFirebaseOptions.currentPlatform,
-/// );
+/// ); 
 /// ```
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
@@ -28,10 +28,7 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -63,6 +60,17 @@ class DefaultFirebaseOptions {
     messagingSenderId: '497921659842',
     projectId: 'counting-love-day',
     storageBucket: 'counting-love-day.appspot.com',
+    iosClientId: '497921659842-0hn7uc05to3v3uuiq31sn1u3mpanbr29.apps.googleusercontent.com',
     iosBundleId: 'com.example.countingLoveDay',
+  );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyDvqyGqyqXVPC1zFnzQrFsInFLQs6C-xRk',
+    appId: '1:497921659842:ios:fe57fe6399b41151b97c5b',
+    messagingSenderId: '497921659842',
+    projectId: 'counting-love-day',
+    storageBucket: 'counting-love-day.appspot.com',
+    iosClientId: '497921659842-skq6mde5gaucsuq0q6t0dfnm7j858e39.apps.googleusercontent.com',
+    iosBundleId: 'y',
   );
 }

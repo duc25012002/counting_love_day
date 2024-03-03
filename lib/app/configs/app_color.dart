@@ -7,4 +7,6 @@ class AppColor {
   static Color secondary = HexColor("#AA65EF");
   static Color blue = HexColor("#1C49E8");
   static Color silver = HexColor("#DDE4ED");
+
+  static Color actionColor = HexColor("FF78C4");
 }

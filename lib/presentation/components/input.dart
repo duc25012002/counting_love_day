@@ -4,31 +4,30 @@ import 'package:counting_love_day/app/configs/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-TextFormField Input(
-    TextEditingController? _textEditingController,
-    FocusNode? _focus,
-    var _controller,
-    String? _label,
-    RxBool? isFocus,
-    TextInputType? keyboardType) {
-  return TextFormField(
-    controller: _textEditingController,
-    focusNode: _focus,
-    keyboardType: keyboardType,
-    decoration: InputDecoration(
-      labelText: _label,
-      labelStyle:
-          TextStyle(color: isFocus == true ? AppColor.primary : Colors.black38),
-      border: OutlineInputBorder(
-        borderSide: BorderSide(color: AppColor.primary),
-        borderRadius: const BorderRadius.all(
-          Radius.circular(5),
+Input(
+  TextEditingController? _textEditingController,
+  String? _label,
+  RxBool? isFocus,
+  TextInputType? keyboardType,
+  String? Function(String?)? validate,
+) {
+  return Padding(
+    padding: const EdgeInsets.symmetric(vertical: 10),
+    child: TextFormField(
+      controller: _textEditingController,
+      validator: validate,
+      keyboardType: keyboardType,
+      decoration: InputDecoration(
+        labelText: _label,
+        labelStyle: TextStyle(
+            color: isFocus == true ? AppColor.primary : Colors.black38),
+        border: OutlineInputBorder(
+          borderSide: BorderSide(color: AppColor.primary),
+          borderRadius: const BorderRadius.all(Radius.circular(5)),
         ),
-      ),
-      focusedBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: AppColor.primary),
-        borderRadius: const BorderRadius.all(
-          Radius.circular(5),
+        focusedBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: AppColor.primary),
+          borderRadius: const BorderRadius.all(Radius.circular(5)),
         ),
       ),
     ),

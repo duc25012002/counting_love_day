@@ -8,8 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 
-class AuthenScreen extends StatelessWidget {
-  const AuthenScreen({super.key});
+class LoginScreen extends StatelessWidget {
+  const LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -123,29 +123,40 @@ class AuthenScreen extends StatelessWidget {
           children: [
             Input(
               _controller.userName,
-              _controller.focusNode1,
-              _controller,
               "User name",
-              _controller.isFocus1,
+              _controller.isFocus,
               TextInputType.emailAddress,
+              (value) {
+                if (value!.isEmpty || !value.contains("@")) {
+                  return 'Please enter your email address';
+                }
+                return null;
+              },
             ),
             SizedBox(height: Reponsive.height * 0.01),
             Input(
               _controller.password,
-              _controller.focusNode2,
-              _controller,
               "Password",
-              _controller.isFocus2,
+              _controller.isFocus,
               TextInputType.text,
+              (value) {
+                if (value!.isEmpty) {
+                  return 'Please enter your password';
+                }
+                return null;
+              },
             ),
             SizedBox(height: Reponsive.height * 0.02),
             ElevatedButton(
               onPressed: () async {
-                if (await _controller.withLogin() == 2) {
-                  Fluttertoast.showToast(
-                      msg: "Tài khoản hoặc mật khẩu không chính xác!");
-                } else if (await _controller.withLogin() == 1) {
-                  Fluttertoast.showToast(msg: "Vui lòng xác thực tài khoản!");
+                if (_formKey.currentState!.validate()) {
+                  if (await _controller.withLogin() == 2) {
+                    Fluttertoast.showToast(
+                        msg: "Tài khoản hoặc mật khẩu không chính xác!");
+                  } else if (await _controller.withLogin() == 1) {
+                    Fluttertoast.showToast(msg: "Vui lòng xác thực tài khoản!");
+                  }
+                  print(await _controller.withLogin());
                 }
               },
               style: ElevatedButton.styleFrom(
@@ -156,7 +167,7 @@ class AuthenScreen extends StatelessWidget {
                 fixedSize: Size(Reponsive.width, Reponsive.height * 0.06),
               ),
               child: const Text(
-                "Sign in",
+                "Login",
                 style: TextStyle(color: Colors.white),
               ),
             ),

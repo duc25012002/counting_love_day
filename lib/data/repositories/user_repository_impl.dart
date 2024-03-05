@@ -6,6 +6,10 @@ import '../../app/core/internet_services.dart';
 import '../../domain/repositories/user_repository.dart';
 
 class UserRepositoryImpl implements UserRepository {
+  Map<String, String>? headers = {
+    'Content-Type': 'application/x-www-form-urlencoded'
+  };
+
   @override
   Future<dynamic> userLogin(
       {required String email, required String password}) async {
@@ -16,8 +20,7 @@ class UserRepositoryImpl implements UserRepository {
           'email': email,
           'password': password,
         },
-        options: Options(
-            headers: {'Content-Type': 'application/x-www-form-urlencoded'}),
+        options: Options(headers: headers),
       );
       return response;
     } on DioError catch (e) {
@@ -42,8 +45,7 @@ class UserRepositoryImpl implements UserRepository {
           'password': password,
           'password_confirmation': passwordConfirmation,
         },
-        options: Options(
-            headers: {'Content-Type': 'application/x-www-form-urlencoded'}),
+        options: Options(headers: headers),
       );
       return response;
     } on DioError catch (e) {
@@ -60,8 +62,23 @@ class UserRepositoryImpl implements UserRepository {
         data: {
           'email': email,
         },
-        options: Options(
-            headers: {'Content-Type': 'application/x-www-form-urlencoded'}),
+        options: Options(headers: headers),
+      );
+      return response;
+    } on DioError catch (e) {
+      var error = ApiException.fromDioError(e);
+      throw error.errorMessage;
+    }
+  }
+
+  @override
+  Future<dynamic> verifyUserEmail(
+      {required String email, required String code}) async {
+    try {
+      final response = await DioClient.instance.post(
+        verifyEmail,
+        data: {'email': email, 'code': code},
+        options: Options(headers: headers),
       );
       return response;
     } on DioError catch (e) {

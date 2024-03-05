@@ -5,14 +5,20 @@ import 'package:get/get.dart';
 class AuthController extends GetxController {
   final UserUsecaseImpl _userUsecaseImpl = Get.find(tag: "user_login");
   final formKey = GlobalKey<FormState>();
+
   TextEditingController email = TextEditingController();
   TextEditingController userName = TextEditingController();
   TextEditingController password = TextEditingController();
   TextEditingController passwordConfirm = TextEditingController();
+  TextEditingController pinController = TextEditingController();
+
   FocusNode? focusNode;
   RxBool isFocus = false.obs;
   RxBool nextPage = false.obs;
+  RxInt reponseCode = 10.obs;
   RxInt current = 0.obs;
+  RxString pinValue = "".obs;
+  RxString userEmail = "".obs;
 
   @override
   void onInit() {
@@ -20,16 +26,18 @@ class AuthController extends GetxController {
     focusNode?.addListener(() {
       isFocus.value = focusNode!.hasFocus;
     });
+    withGetUserEmail();
   }
 
   withLogin() async {
     if (userName.text.isNotEmpty && password.text.isNotEmpty) {
+      await _userUsecaseImpl.saveUserEmail(userName.text);
       try {
         String code = await _userUsecaseImpl.userLogin(
           email: userName.text,
           password: password.text,
         );
-        return int.tryParse(code);
+        reponseCode.value = int.tryParse(code)!;
       } catch (exception) {
         print(exception.toString());
       }
@@ -45,7 +53,7 @@ class AuthController extends GetxController {
           passwordConfirmation: passwordConfirm.text,
           userName: userName.text,
         );
-        return int.tryParse(code);
+        reponseCode.value = int.tryParse(code)!;
       } catch (exception) {
         print(exception.toString());
       }
@@ -56,10 +64,33 @@ class AuthController extends GetxController {
     if (email.text.isNotEmpty) {
       try {
         String code = await _userUsecaseImpl.checkEmail(email: email.text);
-        return int.tryParse(code);
+        await _userUsecaseImpl.saveUserEmail(email.text);
+        print(await _userUsecaseImpl.getUserEmail());
+        reponseCode.value = int.tryParse(code)!;
       } catch (exception) {
         print(exception.toString());
       }
+    }
+  }
+
+  withGetUserEmail() async {
+    try {
+      userEmail.value = await _userUsecaseImpl.getUserEmail();
+      print(userEmail);
+    } catch (exception) {
+      print(exception.toString());
+    }
+  }
+
+  withVerifyUserEmail() async {
+    try {
+      userEmail.value = await _userUsecaseImpl.getUserEmail();
+      String code = await _userUsecaseImpl.verifyUserEmail(
+          email: userEmail.value, code: pinValue.value);
+      print(int.tryParse(code));
+      reponseCode.value = int.tryParse(code)!;
+    } catch (exception) {
+      print(exception.toString());
     }
   }
 

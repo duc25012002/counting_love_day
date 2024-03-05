@@ -7,4 +7,5 @@ abstract class UserRepository {
     required String password,
     required String passwordConfirmation,
   });
+  Future<void> verifyUserEmail({required String email, required String code});
 }

@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:counting_love_day/app/configs/app_color.dart';
+import 'package:counting_love_day/app/router/routes.dart';
 import 'package:counting_love_day/presentation/components/input.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -146,26 +147,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         child: ElevatedButton(
                           onPressed: () async {
                             if (_controller.current.value == 0) {
-                              if (await _controller.withCheckMail() == 0) {
+                              await _controller.withCheckMail();
+                              if (_controller.reponseCode.value == 0) {
                                 _controller.nextPage.value = true;
-                                if (_controller.current.value == 3) {
-                                  if (await _controller.withRegister() == 0) {
-                                    Fluttertoast.showToast(
-                                        msg:
-                                            "Đăng ký thành công. Vui lòng xác thực tài khoản.");
-                                  } else if (await _controller.withRegister() ==
-                                      2) {
-                                    Fluttertoast.showToast(
-                                        msg: "Tài khoản đã tồn tại.");
-                                  } else if (await _controller.withRegister() ==
-                                      3) {
-                                    Fluttertoast.showToast(
-                                        msg:
-                                            "Vui lòng kiểm tra email và xác thực tài khoản.");
-                                  }
-                                }
-                              } else if (await _controller.withCheckMail() ==
-                                  1) {
+                              } else if (_controller.reponseCode.value == 1) {
                                 Fluttertoast.showToast(
                                     msg: "Vui lòng nhập đúng định dạng email.");
                               } else {
@@ -174,6 +159,27 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                         "Email đã tồn tại. Vui lòng sử dụng email khác.");
                               }
                             }
+                            if (_controller.current.value == 3) {
+                              await _controller.withRegister();
+                              if (_controller.reponseCode.value == 0) {
+                                Fluttertoast.showToast(
+                                  msg:
+                                      "Đăng ký thành công. Vui lòng xác thực tài khoản.",
+                                );
+                                _controller.nextPage.value = false;
+                                Get.toNamed(Routes.verifyEmailScreen);
+                              } else if (_controller.reponseCode.value == 2) {
+                                Fluttertoast.showToast(
+                                  msg: "Tài khoản đã tồn tại.",
+                                );
+                              } else if (_controller.reponseCode.value == 3) {
+                                Fluttertoast.showToast(
+                                  msg:
+                                      "Vui lòng kiểm tra email và xác thực tài khoản.",
+                                );
+                              }
+                            }
+
                             if (_controller.nextPage.value == true) {
                               carouselController.nextPage(
                                 duration: const Duration(milliseconds: 350),

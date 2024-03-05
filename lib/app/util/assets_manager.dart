@@ -4,5 +4,11 @@ const _lottie = "";
 const _font = "";
 
 class IconAssets {
-  static const String icon_user = "$_icons/user.svg";
+  static const String iconUser = "$_icons/user.svg";
+  static const String iconMemory = "$_icons/icon_memory.svg";
+  static const String iconReminder = "$_icons/BsClock.svg";
+  static const String iconNotify = "$_icons/Vector.svg";
+  static const String iconHome = "$_icons/Group_94.svg";
+  static const String iconSetting = "$_icons/setting.svg";
+  static const String iconPremium = "$_icons/premium.png";
 }

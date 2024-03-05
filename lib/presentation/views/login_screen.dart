@@ -2,6 +2,7 @@
 
 import 'package:counting_love_day/app/configs/app_color.dart';
 import 'package:counting_love_day/app/configs/reponsive.dart';
+import 'package:counting_love_day/app/router/routes.dart';
 import 'package:counting_love_day/presentation/components/input.dart';
 import 'package:counting_love_day/presentation/controllers/auth_controller.dart';
 import 'package:flutter/material.dart';
@@ -101,6 +102,14 @@ class LoginScreen extends StatelessWidget {
                                 ),
                               ),
                             ],
+                          ),
+                          Center(
+                            child: TextButton(
+                              onPressed: () {
+                                Get.toNamed(Routes.signUpScreen);
+                              },
+                              child: const Text("No account? Sign up"),
+                            ),
                           )
                         ],
                       ),
@@ -150,13 +159,24 @@ class LoginScreen extends StatelessWidget {
             ElevatedButton(
               onPressed: () async {
                 if (_formKey.currentState!.validate()) {
-                  if (await _controller.withLogin() == 2) {
+                  await _controller.withLogin();
+
+                  if (_controller.reponseCode.value == 2) {
                     Fluttertoast.showToast(
-                        msg: "Tài khoản hoặc mật khẩu không chính xác!");
-                  } else if (await _controller.withLogin() == 1) {
-                    Fluttertoast.showToast(msg: "Vui lòng xác thực tài khoản!");
+                        msg: "Tài khoản hoặc mật khẩu không chính xác.");
+                  } else if (_controller.reponseCode.value == 1) {
+                    Fluttertoast.showToast(msg: "Vui lòng xác thực tài khoản.");
+                  } else if (_controller.reponseCode.value == 3) {
+                    Fluttertoast.showToast(
+                        msg:
+                            "Người dùng đã bị chặn. Vui lòng liên hệ quản trị viên để được hỗ trợ.");
+                  } else if (_controller.reponseCode.value == 4) {
+                    Fluttertoast.showToast(
+                        msg: "Vui lòng xác thực người dùng.");
+                    Get.offAllNamed(Routes.verifyEmailScreen);
+                  } else if (_controller.reponseCode.value == 0) {
+                    Get.toNamed(Routes.homeScreen);
                   }
-                  print(await _controller.withLogin());
                 }
               },
               style: ElevatedButton.styleFrom(

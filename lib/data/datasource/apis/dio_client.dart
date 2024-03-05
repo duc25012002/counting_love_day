@@ -60,8 +60,12 @@ class DioClient {
         onSendProgress: onSendProgress,
         onReceiveProgress: onReceiveProgress,
       );
+
       if (response.statusCode == 200 || response.statusCode == 201) {
-        if (path == login || path == register || path == checkMail) {
+        if (path == login ||
+            path == register ||
+            path == checkMail ||
+            path == verifyEmail) {
           final document = XmlDocument.parse(response.data);
           final List<XmlElement> codeList =
               document.findAllElements('code').toList();

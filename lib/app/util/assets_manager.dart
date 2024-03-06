@@ -1,6 +1,6 @@
 const _icons = "assets/icons";
 const _images = "";
-const _lottie = "";
+const _lottie = "assets/lotties";
 const _font = "";
 
 class IconAssets {
@@ -11,4 +11,6 @@ class IconAssets {
   static const String iconHome = "$_icons/Group_94.svg";
   static const String iconSetting = "$_icons/setting.svg";
   static const String iconPremium = "$_icons/premium.png";
+
+  static const String lottieCouple = "$_lottie/couple.json";
 }

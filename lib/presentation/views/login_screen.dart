@@ -65,7 +65,7 @@ class LoginScreen extends StatelessWidget {
                           ),
                           SizedBox(height: Reponsive.height * 0.05),
                           _formLogin(_controller.formKey, _controller),
-                          SizedBox(height: Reponsive.height * 0.01),
+                          SizedBox(height: Reponsive.height * 0.02),
                           SizedBox(
                             width: Reponsive.width,
                             child: Text(
@@ -103,12 +103,31 @@ class LoginScreen extends StatelessWidget {
                               ),
                             ],
                           ),
+                          SizedBox(height: Reponsive.height * 0.02),
                           Center(
-                            child: TextButton(
-                              onPressed: () {
-                                Get.toNamed(Routes.signUpScreen);
-                              },
-                              child: const Text("No account? Sign up"),
+                            child: InkWell(
+                              onTap: () => Get.toNamed(Routes.signUpScreen),
+                              child: RichText(
+                                text: TextSpan(
+                                  children: [
+                                    TextSpan(
+                                      text: "No account?",
+                                      style: TextStyle(
+                                        color: AppColor.blue,
+                                      ),
+                                    ),
+                                    TextSpan(
+                                      text: " Sign up",
+                                      style: TextStyle(
+                                        color: AppColor.primary,
+                                      ),
+                                    ),
+                                  ],
+                                  style: const TextStyle(
+                                    decoration: TextDecoration.underline,
+                                  ),
+                                ),
+                              ),
                             ),
                           )
                         ],

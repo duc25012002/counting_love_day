@@ -3,10 +3,10 @@ import 'package:dio/dio.dart';
 import 'package:xml/xml.dart';
 import '../../../app/configs/api_config.dart' as url;
 import '../../../app/configs/api_config.dart';
+import '../../../app/services/log.dart';
 
 class DioClient {
   DioClient._();
-
   static final instance = DioClient._();
 
   final Dio _dio = Dio(
@@ -51,6 +51,7 @@ class DioClient {
     ProgressCallback? onReceiveProgress, // theo dõi tiến trình nhận
   }) async {
     try {
+      log.d("DATA POST:: $data");
       final Response response = await _dio.post(
         path,
         data: data,
@@ -61,6 +62,7 @@ class DioClient {
         onReceiveProgress: onReceiveProgress,
       );
 
+      // XML SCHEMA
       if (response.statusCode == 200 || response.statusCode == 201) {
         if (path == login ||
             path == register ||

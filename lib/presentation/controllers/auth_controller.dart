@@ -1,6 +1,7 @@
 import 'package:counting_love_day/domain/usecase/user_usecase.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../app/services/log.dart';
 
 class AuthController extends GetxController {
   final UserUsecaseImpl _userUsecaseImpl = Get.find(tag: "user_login");
@@ -65,7 +66,9 @@ class AuthController extends GetxController {
       try {
         String code = await _userUsecaseImpl.checkEmail(email: email.text);
         await _userUsecaseImpl.saveUserEmail(email.text);
-        print(await _userUsecaseImpl.getUserEmail());
+        log.i(
+          "DATA LOCAL:: ${await _userUsecaseImpl.getUserEmail()}",
+        );
         reponseCode.value = int.tryParse(code)!;
       } catch (exception) {
         print(exception.toString());
@@ -76,7 +79,7 @@ class AuthController extends GetxController {
   withGetUserEmail() async {
     try {
       userEmail.value = await _userUsecaseImpl.getUserEmail();
-      print(userEmail);
+      log.i("local response--> $userEmail");
     } catch (exception) {
       print(exception.toString());
     }

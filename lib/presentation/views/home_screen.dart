@@ -26,17 +26,18 @@ class _HomeScreenState extends State<HomeScreen> {
     Reponsive().setSize(context);
     HomeController _controller = Get.find(tag: "home_controller");
 
-    var header = Container(
+    Container body = Container(
       width: Reponsive.width,
       height: Reponsive.height * 0.2,
       decoration: BoxDecoration(
+        color: Colors.white,
         borderRadius: BorderRadius.circular(10),
-        boxShadow: const [
+        boxShadow: [
           BoxShadow(
-            color: Colors.black12,
-            spreadRadius: 2,
-            blurRadius: 5,
-            offset: Offset(0, 3),
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 5,
+            blurRadius: 7,
+            offset: const Offset(0, 3),
           ),
         ],
       ),
@@ -66,91 +67,108 @@ class _HomeScreenState extends State<HomeScreen> {
               height: Reponsive.height * 0.5,
               decoration: const BoxDecoration(color: Colors.white),
               child: Input(
-                  _controller.email,
-                  "Nhập email người ghép đôi với bạn",
-                  _controller.isFocus,
-                  TextInputType.emailAddress,
-                  (p0) => null),
+                _controller.email,
+                "Nhập email người ghép đôi với bạn",
+                _controller.isFocus,
+                TextInputType.emailAddress,
+                (p0) => null,
+              ),
             ),
           )
         ],
       ),
     );
 
+    Row header = Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Container(
+          width: Reponsive.width * 0.6,
+          height: Reponsive.height * 0.04,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(10),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                spreadRadius: 5,
+                blurRadius: 7,
+                offset: const Offset(0, 3),
+              ),
+            ],
+          ),
+          child: InkWell(
+            onTap: () {},
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Image.asset(IconAssets.iconPremium),
+                RichText(
+                  text: TextSpan(
+                    children: [
+                      TextSpan(
+                        text: "Get",
+                        style: TextStyle(
+                          color: AppColor.textPurple,
+                          fontSize: Reponsive.fontSize * 5,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      TextSpan(
+                        text: " Kapo Premium ",
+                        style: TextStyle(
+                          color: AppColor.actionColor,
+                          fontSize: Reponsive.fontSize * 5,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      TextSpan(
+                        text: "now ",
+                        style: TextStyle(
+                          color: AppColor.textPurple,
+                          fontSize: Reponsive.fontSize * 5,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      TextSpan(
+                        text: "→",
+                        style: TextStyle(
+                          color: AppColor.actionColor,
+                          fontSize: Reponsive.fontSize * 5,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
+          ),
+        ),
+        CircleAvatar(
+          radius: 20,
+          child: SvgPicture.asset(
+            IconAssets.iconUser,
+            width: 50,
+            height: 50,
+            color: Colors.white,
+          ),
+        )
+      ],
+    );
+
+    // main
     return Scaffold(
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Container(
-                    width: Reponsive.width * 0.5,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.white.withOpacity(0.5),
-                          spreadRadius: 2,
-                          blurRadius: 5,
-                          offset: const Offset(0, 3),
-                        ),
-                      ],
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Image.asset(IconAssets.iconPremium),
-                        RichText(
-                          text: TextSpan(
-                            children: [
-                              TextSpan(
-                                text: "Get",
-                                style: TextStyle(
-                                  color: AppColor.actionColor,
-                                  fontSize: Reponsive.fontSize * 5,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                              TextSpan(
-                                text: " Kapo Premium ",
-                                style: TextStyle(
-                                  color: AppColor.textPurple,
-                                  fontSize: Reponsive.fontSize * 5,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                              TextSpan(
-                                text: "now",
-                                style: TextStyle(
-                                  color: AppColor.actionColor,
-                                  fontSize: Reponsive.fontSize * 5,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                            ],
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                  CircleAvatar(
-                    radius: 20,
-                    child: SvgPicture.asset(
-                      IconAssets.iconUser,
-                      width: 50,
-                      height: 50,
-                      color: Colors.white,
-                    ),
-                  )
-                ],
-              ),
-              SizedBox(height: Reponsive.height * 0.01),
               header,
+              SizedBox(height: Reponsive.height * 0.02),
+              body,
             ],
           ),
         ),

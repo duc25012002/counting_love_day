@@ -11,6 +11,8 @@ class IconAssets {
   static const String iconHome = "$_icons/Group_94.svg";
   static const String iconSetting = "$_icons/setting.svg";
   static const String iconPremium = "$_icons/premium.png";
+  static const String iconFly = "$_icons/icon_fly.svg";
+  static const String empty = "$_icons/empty.svg";
 
   static const String lottieCouple = "$_lottie/couple.json";
 }

@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:counting_love_day/app/configs/app_color.dart';
 import 'package:counting_love_day/app/router/routes.dart';
+import 'package:counting_love_day/app/util/assets_manager.dart';
 import 'package:counting_love_day/presentation/components/input.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -29,36 +30,24 @@ class _SignUpScreenState extends State<SignUpScreen> {
         "Enter your email",
         _controller.isFocus,
         TextInputType.emailAddress,
-        (validate) {
-          return null;
-        },
       ),
       Input(
         _controller.password,
         "Enter your password",
         _controller.isFocus,
         TextInputType.text,
-        (validate) {
-          return null;
-        },
       ),
       Input(
         _controller.passwordConfirm,
         "Enter your password confirmation",
         _controller.isFocus,
         TextInputType.text,
-        (validate) {
-          return null;
-        },
       ),
       Input(
         _controller.userName,
         "Enter your user name",
         _controller.isFocus,
         TextInputType.text,
-        (validate) {
-          return null;
-        },
       ),
     ];
     return Scaffold(
@@ -71,7 +60,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               mainAxisSize: MainAxisSize.max,
               children: [
                 Lottie.asset(
-                  "assets/icons/couple.json",
+                  IconAssets.lottieCouple,
                   height: Reponsive.height / 2.5,
                 ),
                 Padding(

@@ -18,4 +18,8 @@ class LocalStorageService extends GetxService {
   String? getData(String key) {
     return _sharedPreferences?.getString(key);
   }
+
+  Future<void> deleteData(String key) async {
+    await _sharedPreferences?.remove(key);
+  }
 }

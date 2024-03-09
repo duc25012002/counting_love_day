@@ -154,7 +154,7 @@ class LoginScreen extends StatelessWidget {
               "User name",
               _controller.isFocus,
               TextInputType.emailAddress,
-              (value) {
+              validate: (value) {
                 if (value!.isEmpty || !value.contains("@")) {
                   return 'Please enter your email address';
                 }
@@ -167,7 +167,7 @@ class LoginScreen extends StatelessWidget {
               "Password",
               _controller.isFocus,
               TextInputType.text,
-              (value) {
+              validate: (value) {
                 if (value!.isEmpty) {
                   return 'Please enter your password';
                 }

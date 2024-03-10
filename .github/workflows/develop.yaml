@@ -14,7 +14,7 @@ jobs:
         flutter-version: '3.16.3'
     - run: flutter config --no-analytics
     - run: flutter pub get
-    - run: flutter build apk --release
+    - run: flutter build apk 
     - name: Create a Release APK
       uses: ncipollo/release-action@v1
       with:

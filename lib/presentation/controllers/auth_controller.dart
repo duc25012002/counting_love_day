@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import '../../../app/services/log.dart';
 
 class AuthController extends GetxController {
-  final UserUsecaseImpl _userUsecaseImpl = Get.find(tag: "user_login");
+  final UserUsecaseImpl _userUsecaseImpl = Get.find(tag: "auth");
   final formKey = GlobalKey<FormState>();
 
   TextEditingController email = TextEditingController();
@@ -20,6 +20,8 @@ class AuthController extends GetxController {
   RxInt current = 0.obs;
   RxString pinValue = "".obs;
   RxString userEmail = "".obs;
+  RxInt countdown = 30.obs;
+  RxBool isActiveButton = true.obs;
 
   @override
   void onInit() {
@@ -79,7 +81,7 @@ class AuthController extends GetxController {
   withGetUserEmail() async {
     try {
       userEmail.value = await _userUsecaseImpl.getUserEmail();
-      log.i("local response--> $userEmail");
+      log.i("[Local response]: $userEmail");
     } catch (exception) {
       print(exception.toString());
     }
@@ -91,6 +93,17 @@ class AuthController extends GetxController {
       String code = await _userUsecaseImpl.verifyUserEmail(
           email: userEmail.value, code: pinValue.value);
       print(int.tryParse(code));
+      reponseCode.value = int.tryParse(code)!;
+    } catch (exception) {
+      print(exception.toString());
+    }
+  }
+
+  withResentOtp() async {
+    try {
+      userEmail.value = await _userUsecaseImpl.getUserEmail();
+      String code = await _userUsecaseImpl.resentOtp(email: userEmail.value);
+      log.d(int.tryParse(code));
       reponseCode.value = int.tryParse(code)!;
     } catch (exception) {
       print(exception.toString());

@@ -1,4 +1,5 @@
 // ignore_for_file: nullable_type_in_catch_clause, deprecated_member_use, unused_local_variable
+import 'package:counting_love_day/app/services/log.dart';
 import 'package:dio/dio.dart';
 import 'package:counting_love_day/data/datasource/apis/dio_client.dart';
 import '../../app/configs/api_config.dart';
@@ -78,6 +79,21 @@ class UserRepositoryImpl implements UserRepository {
       final response = await DioClient.instance.post(
         verifyEmail,
         data: {'email': email, 'code': code},
+        options: Options(headers: headers),
+      );
+      return response;
+    } on DioError catch (e) {
+      var error = ApiException.fromDioError(e);
+      throw error.errorMessage;
+    }
+  }
+
+  @override
+  Future<void> resendOtp({required String email}) async {
+    try {
+      final response = await DioClient.instance.post(
+        resendOTP,
+        data: {'email': email},
         options: Options(headers: headers),
       );
       return response;

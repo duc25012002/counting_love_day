@@ -28,6 +28,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       Input(
         _controller.email,
         "Enter your email",
+        shadow: false,
         _controller.isFocus,
         TextInputType.emailAddress,
       ),
@@ -35,18 +36,21 @@ class _SignUpScreenState extends State<SignUpScreen> {
         _controller.password,
         "Enter your password",
         _controller.isFocus,
+        shadow: false,
         TextInputType.text,
       ),
       Input(
         _controller.passwordConfirm,
         "Enter your password confirmation",
         _controller.isFocus,
+        shadow: false,
         TextInputType.text,
       ),
       Input(
         _controller.userName,
         "Enter your user name",
         _controller.isFocus,
+        shadow: false,
         TextInputType.text,
       ),
     ];

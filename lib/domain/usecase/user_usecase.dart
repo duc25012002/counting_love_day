@@ -1,24 +1,32 @@
+import 'package:counting_love_day/app/services/log.dart';
 import 'package:counting_love_day/data/repositories/local_datasource_impl.dart';
 import 'package:counting_love_day/data/repositories/user_repository_impl.dart';
 import 'package:get/get.dart';
 
 abstract class UserUsecase {
+  // features
   Future<void> userLogin({required String email, required String password});
+  Future<void> checkEmail({required String email});
+  Future<void> verifyUserEmail({required String email, required String code});
+  Future<void> resentOtp({required String email});
   Future<void> userRegister({
     required String email,
     required String userName,
     required String password,
     required String passwordConfirmation,
   });
-  Future<void> checkEmail({required String email});
+
+  // local
   Future<void> saveUserEmail(String email);
   Future<dynamic> getUserEmail();
-  Future<void> verifyUserEmail({required String email, required String code});
+
+  Future<dynamic> getUserToken();
 }
 
 class UserUsecaseImpl implements UserUsecase {
-  final UserRepositoryImpl userRepository = Get.find(tag: "user_login");
+  final UserRepositoryImpl userRepository = Get.find(tag: "auth");
   final LocalDataSourceImpl _localDataSourceImpl = Get.find(tag: "user_local");
+
   @override
   Future<dynamic> userLogin(
       {required String email, required String password}) async {
@@ -56,8 +64,18 @@ class UserUsecaseImpl implements UserUsecase {
   }
 
   @override
+  Future<dynamic> getUserToken() async {
+    return await _localDataSourceImpl.getToken();
+  }
+
+  @override
   Future<dynamic> verifyUserEmail(
       {required String email, required String code}) {
     return userRepository.verifyUserEmail(email: email, code: code);
+  }
+
+  @override
+  Future resentOtp({required String email}) {
+    return userRepository.resendOtp(email: email);
   }
 }

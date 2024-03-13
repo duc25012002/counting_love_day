@@ -1,4 +1,4 @@
-// ignore_for_file: deprecated_member_use, no_leading_underscores_for_local_identifiers
+// ignore_for_file: deprecated_member_use, no_leading_underscores_for_local_identifiers, unrelated_type_equality_checks
 
 import 'package:counting_love_day/app/configs/config.dart';
 import 'package:counting_love_day/app/util/assets_manager.dart';
@@ -19,6 +19,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final HomeController _controller = Get.find(tag: "home_controller");
+
   @override
   void initState() {
     super.initState();
@@ -27,7 +29,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     Reponsive().setSize(context);
-    HomeController _controller = Get.find(tag: "home_controller");
     StaticString str = StaticString();
 
     Container top = Container(
@@ -123,7 +124,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Container(
                     width: Reponsive.width * 0.5,
                     height: Reponsive.height * 0.21,
-                    color: Colors.black,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: AppColor.colorGrey,
+                    ),
                   ),
                 ),
                 Expanded(
@@ -135,7 +139,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         Container(
                           width: Reponsive.width,
                           height: Reponsive.height * 0.1,
-                          color: Colors.red,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: AppColor.colorGrey,
+                          ),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(top: 8),
@@ -147,7 +154,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                   child: Container(
                                     width: Reponsive.width,
                                     height: Reponsive.height * 0.1,
-                                    color: Colors.blue,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: AppColor.colorGrey,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -155,7 +165,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                 child: Container(
                                   width: Reponsive.width,
                                   height: Reponsive.height * 0.1,
-                                  color: Colors.green,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    color: AppColor.colorGrey,
+                                  ),
                                 ),
                               ),
                             ],
@@ -208,9 +221,64 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: ListView.builder(
                           itemCount: 10,
                           itemBuilder: (context, index) {
-                            return Text(
-                              "a $index",
-                              style: TextStyle(color: Colors.amber),
+                            return Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: 10.0, horizontal: 8),
+                              child: Container(
+                                width: Reponsive.width,
+                                height: Reponsive.height * 0.05,
+                                decoration: BoxDecoration(
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.grey.withOpacity(0.5),
+                                      spreadRadius: 2,
+                                      blurRadius: 5,
+                                      offset: const Offset(0, 3),
+                                    ),
+                                  ],
+                                  color: AppColor.bgrButtonCouple,
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 15),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      const Text("ductrieuhoang@gmail.com"),
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Container(
+                                          width: Reponsive.width * 0.2,
+                                          height: Reponsive.height * 0.1,
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(20),
+                                            gradient: LinearGradient(
+                                              begin: Alignment.centerLeft,
+                                              end: Alignment.centerRight,
+                                              colors: [
+                                                AppColor.linearGradient1,
+                                                AppColor.linearGradient2,
+                                              ],
+                                            ),
+                                          ),
+                                          child: Center(
+                                            child: Text(
+                                              str.addCouple,
+                                              style: const TextStyle(
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
                             );
                           },
                         ),
@@ -233,10 +301,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   child: Center(
-                      child: Text(
-                    str.checkButton,
-                    style: const TextStyle(color: Colors.white),
-                  )),
+                    child: Text(
+                      str.checkButton,
+                      style: const TextStyle(color: Colors.white),
+                    ),
+                  ),
                 ),
               ),
             ],

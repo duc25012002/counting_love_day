@@ -1,4 +1,5 @@
 // ignore_for_file: library_prefixes, deprecated_member_use
+import 'package:counting_love_day/data/repositories/local_datasource_impl.dart';
 import 'package:dio/dio.dart';
 import 'package:xml/xml.dart';
 import '../../../app/configs/api_config.dart' as url;
@@ -6,8 +7,12 @@ import '../../../app/configs/api_config.dart';
 import '../../../app/services/log.dart';
 
 class DioClient {
+  /// ProgressCallback? onSendProgress, theo dõi tiến trình gửi đi
+  /// ProgressCallback? onReceiveProgress, theo dõi tiến trình nhận
   DioClient._();
   static final instance = DioClient._();
+
+  final LocalDataSourceImpl _localDataSourceImpl = LocalDataSourceImpl();
 
   final Dio _dio = Dio(
     BaseOptions(
@@ -17,12 +22,32 @@ class DioClient {
         responseType: ResponseType.json),
   );
 
+  witHandleXml(Response response, String xmlString) async {
+    final document = XmlDocument.parse(response.data);
+    final List<XmlElement> codeList =
+        document.findAllElements(xmlString).toList();
+
+    if (codeList.isNotEmpty) {
+      final XmlElement dataElement = codeList.first;
+
+      final String data = dataElement.text;
+
+      if (xmlString == 'token') {
+        await _localDataSourceImpl.saveToken(data);
+      } else {
+        return data;
+      }
+    }
+  }
+
   ///Get Method
-  Future<Map<String, dynamic>> get(String path,
-      {Map<String, dynamic>? queryParameters,
-      Options? options,
-      CancelToken? cancelToken,
-      ProgressCallback? onReceiveProgress}) async {
+  Future<dynamic> get(
+    String path, {
+    Map<String, dynamic>? queryParameters,
+    Options? options,
+    CancelToken? cancelToken,
+    ProgressCallback? onReceiveProgress,
+  }) async {
     try {
       final Response response = await _dio.get(
         path,
@@ -31,12 +56,14 @@ class DioClient {
         cancelToken: cancelToken,
         onReceiveProgress: onReceiveProgress,
       );
+      if (path == couple) {
+        log.d("DATA RETURN:: ${response.data}");
+      }
       if (response.statusCode == 200) {
         return response.data;
       }
-      throw "something went wrong";
     } catch (e) {
-      rethrow;
+      log.e(e.toString());
     }
   }
 
@@ -47,8 +74,8 @@ class DioClient {
     Map<String, dynamic>? queryParameters,
     Options? options,
     CancelToken? cancelToken,
-    ProgressCallback? onSendProgress, //theo dõi tiến trình gửi đi
-    ProgressCallback? onReceiveProgress, // theo dõi tiến trình nhận
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
   }) async {
     try {
       log.d("DATA POST:: $data");
@@ -61,28 +88,21 @@ class DioClient {
         onSendProgress: onSendProgress,
         onReceiveProgress: onReceiveProgress,
       );
-
       // XML SCHEMA
       if (response.statusCode == 200 || response.statusCode == 201) {
         if (path == login ||
             path == register ||
             path == checkMail ||
             path == verifyEmail) {
-          final document = XmlDocument.parse(response.data);
-          final List<XmlElement> codeList =
-              document.findAllElements('code').toList();
-          if (codeList.isNotEmpty) {
-            final XmlElement dataElement = codeList.first;
-            // Lấy dữ liệu bên trong node <data>
-            final String data = dataElement.text;
-            return data;
-          }
+          witHandleXml(response, 'token');
+
+          return witHandleXml(response, 'code');
         } else {
           return response.data;
         }
       }
     } catch (e) {
-      rethrow;
+      log.e(e.toString());
     }
   }
 

@@ -29,7 +29,11 @@ class _StartAppState extends State<StartApp> {
         inactiveColorPrimary: Colors.black26,
       ),
       PersistentBottomNavBarItem(
-        icon: SvgPicture.asset(IconAssets.iconReminder, width: 80, height: 80),
+        icon: SvgPicture.asset(
+          IconAssets.iconReminder,
+          width: 80,
+          height: 80,
+        ),
         title: ("Nhắc nhở"),
         activeColorPrimary: AppColor.primary,
         inactiveColorPrimary: Colors.black26,
@@ -41,13 +45,21 @@ class _StartAppState extends State<StartApp> {
         inactiveColorPrimary: Colors.black26,
       ),
       PersistentBottomNavBarItem(
-        icon: SvgPicture.asset(IconAssets.iconNotify, width: 80, height: 80),
+        icon: SvgPicture.asset(
+          IconAssets.iconNotify,
+          width: 80,
+          height: 80,
+        ),
         title: ("Thông báo"),
         activeColorPrimary: AppColor.primary,
         inactiveColorPrimary: Colors.black26,
       ),
       PersistentBottomNavBarItem(
-        icon: SvgPicture.asset(IconAssets.iconSetting, width: 80, height: 80),
+        icon: SvgPicture.asset(
+          IconAssets.iconSetting,
+          width: 80,
+          height: 80,
+        ),
         title: ("Thông báo"),
         activeColorPrimary: AppColor.primary,
         inactiveColorPrimary: Colors.black26,

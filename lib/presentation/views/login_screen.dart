@@ -5,6 +5,7 @@ import 'package:counting_love_day/app/configs/reponsive.dart';
 import 'package:counting_love_day/app/router/routes.dart';
 import 'package:counting_love_day/presentation/components/input.dart';
 import 'package:counting_love_day/presentation/controllers/auth_controller.dart';
+import 'package:counting_love_day/presentation/controllers/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
@@ -16,6 +17,7 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Reponsive().setSize(context);
     AuthController _controller = Get.find(tag: "auth_controller");
+    final HomeController _homeController = Get.find(tag: "home_controller");
 
     return Scaffold(
       backgroundColor: AppColor.background,
@@ -64,7 +66,11 @@ class LoginScreen extends StatelessWidget {
                             ),
                           ),
                           SizedBox(height: Reponsive.height * 0.05),
-                          _formLogin(_controller.formKey, _controller),
+                          _formLogin(
+                            _controller.formKey,
+                            _controller,
+                            _homeController,
+                          ),
                           SizedBox(height: Reponsive.height * 0.02),
                           SizedBox(
                             width: Reponsive.width,
@@ -143,36 +149,48 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
-  Form _formLogin(GlobalKey<FormState> _formKey, AuthController _controller) {
+  Form _formLogin(
+    GlobalKey<FormState> _formKey,
+    AuthController _controller,
+    HomeController _homeController,
+  ) {
     return Form(
       key: _formKey,
       child: Obx(
         () => Column(
           children: [
-            Input(
-              _controller.userName,
-              "User name",
-              _controller.isFocus,
-              TextInputType.emailAddress,
-              validate: (value) {
-                if (value!.isEmpty || !value.contains("@")) {
-                  return 'Please enter your email address';
-                }
-                return null;
-              },
+            SizedBox(
+              height: Reponsive.height * 0.1,
+              child: Input(
+                _controller.userName,
+                "User name",
+                shadow: false,
+                _controller.isFocus,
+                TextInputType.emailAddress,
+                validate: (value) {
+                  if (value!.isEmpty || !value.contains("@")) {
+                    return 'Please enter your email address';
+                  }
+                  return null;
+                },
+              ),
             ),
             SizedBox(height: Reponsive.height * 0.01),
-            Input(
-              _controller.password,
-              "Password",
-              _controller.isFocus,
-              TextInputType.text,
-              validate: (value) {
-                if (value!.isEmpty) {
-                  return 'Please enter your password';
-                }
-                return null;
-              },
+            SizedBox(
+              height: Reponsive.height * 0.1,
+              child: Input(
+                _controller.password,
+                "Password",
+                shadow: false,
+                _controller.isFocus,
+                TextInputType.text,
+                validate: (value) {
+                  if (value!.isEmpty) {
+                    return 'Please enter your password';
+                  }
+                  return null;
+                },
+              ),
             ),
             SizedBox(height: Reponsive.height * 0.02),
             ElevatedButton(
@@ -194,6 +212,7 @@ class LoginScreen extends StatelessWidget {
                         msg: "Vui lòng xác thực người dùng.");
                     Get.offAllNamed(Routes.verifyEmailScreen);
                   } else if (_controller.reponseCode.value == 0) {
+                    await _homeController.withCheckCouple();
                     Get.toNamed(Routes.homeScreen);
                   }
                 }

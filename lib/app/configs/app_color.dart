@@ -10,6 +10,7 @@ class AppColor {
   static Color actionColor = HexColor("#FF78C4");
   static Color textPurple = HexColor("#E1AEFF");
   static Color bgrButtonCouple = HexColor("#FFECEC");
+  static Color colorGrey = HexColor("#CACACA");
 
   static Color linearGradient1 = HexColor("#EC74E7");
   static Color linearGradient2 = HexColor("#8468F5");

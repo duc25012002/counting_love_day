@@ -11,21 +11,23 @@ Input(TextEditingController? _textEditingController, String? _label,
     String? Function(String?)? validate,
     Widget? suffix,
     bool boder = true,
-    bool hintText = false}) {
+    bool hintText = false,
+    bool? shadow = true}) {
   return Padding(
     padding: EdgeInsets.symmetric(vertical: Reponsive.fontSize * 3),
     child: Container(
       constraints: const BoxConstraints.expand(),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: shadow == true ? Colors.white : null,
         borderRadius: BorderRadius.circular(60),
         boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.5),
-            spreadRadius: 2,
-            blurRadius: 2,
-            offset: const Offset(0, 3),
-          ),
+          if (shadow == true)
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.5),
+              spreadRadius: 2,
+              blurRadius: 2,
+              offset: const Offset(0, 3),
+            ),
         ],
       ),
       child: TextFormField(

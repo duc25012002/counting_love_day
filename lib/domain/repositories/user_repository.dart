@@ -8,4 +8,5 @@ abstract class UserRepository {
     required String passwordConfirmation,
   });
   Future<void> verifyUserEmail({required String email, required String code});
+  Future<void> resendOtp({required String email});
 }

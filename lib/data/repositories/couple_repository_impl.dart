@@ -1,4 +1,5 @@
 // ignore_for_file: deprecated_member_use
+import 'package:counting_love_day/app/services/log.dart';
 import 'package:counting_love_day/domain/repositories/couple_repository.dart';
 import 'package:dio/dio.dart';
 
@@ -17,6 +18,7 @@ class CoupleRepositoryImpl implements CoupleRepository {
       );
       return response;
     } on DioError catch (e) {
+      log.i("aaaâ");
       var error = ApiException.fromDioError(e);
       throw error.errorMessage;
     }

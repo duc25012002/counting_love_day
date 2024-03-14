@@ -212,7 +212,7 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               Text(str.requestAddCouple),
               InkWell(
-                onTap: () {
+                onTap: () async {
                   Get.bottomSheet(
                     Container(
                       height: Reponsive.height * 0.3,

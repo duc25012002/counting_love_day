@@ -1,7 +1,7 @@
 // ignore_for_file: nullable_type_in_catch_clause, deprecated_member_use, unused_local_variable
-import 'package:counting_love_day/app/services/log.dart';
-import 'package:dio/dio.dart';
 import 'package:counting_love_day/data/datasource/apis/dio_client.dart';
+import 'package:dio/dio.dart';
+
 import '../../app/configs/api_config.dart';
 import '../../app/core/internet_services.dart';
 import '../../domain/repositories/user_repository.dart';

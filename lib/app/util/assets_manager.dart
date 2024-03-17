@@ -1,3 +1,5 @@
+// ignore_for_file: unused_element
+
 const _icons = "assets/icons";
 const _images = "";
 const _lottie = "assets/lotties";

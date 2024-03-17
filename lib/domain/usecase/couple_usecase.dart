@@ -4,6 +4,10 @@ import 'package:get/get.dart';
 abstract class CoupleUseCase {
   Future<void> checkCouple({required String token});
   Future<dynamic> getListRequest({required String token});
+  Future<dynamic> sendRequestInvite({
+    required String token,
+    required String email,
+  });
 }
 
 class CoupleUseCaseImpl implements CoupleUseCase {
@@ -17,5 +21,10 @@ class CoupleUseCaseImpl implements CoupleUseCase {
   @override
   Future<dynamic> getListRequest({required String token}) {
     return coupleRepositoryImpl.getListRequest(token: token);
+  }
+
+  @override
+  Future sendRequestInvite({required String token, required String email}) {
+    return coupleRepositoryImpl.sendRequestInvite(token: token, email: email);
   }
 }

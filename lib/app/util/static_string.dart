@@ -10,4 +10,7 @@ class StaticString {
   final String reminder = 'Nhắc nhở';
   final String commentsReminder = 'Đừng quên đằng ấy nhắc gì nha';
   final String addCouple = 'Ghép đôi';
+
+  //home screen
+  final String inputEmailHome = 'Nhập email người ghép đôi với bạn';
 }

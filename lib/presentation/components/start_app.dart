@@ -1,8 +1,10 @@
 import 'package:counting_love_day/app/configs/app_color.dart';
 import 'package:counting_love_day/app/util/assets_manager.dart';
 import 'package:counting_love_day/presentation/views/home_screen.dart';
+import 'package:counting_love_day/presentation/views/settings_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
@@ -24,7 +26,7 @@ class _StartAppState extends State<StartApp> {
           width: 80,
           height: 80,
         ),
-        title: ("Kỷ niệm"),
+        title: ("anniversary".tr),
         activeColorPrimary: AppColor.primary,
         inactiveColorPrimary: Colors.black26,
       ),
@@ -34,13 +36,13 @@ class _StartAppState extends State<StartApp> {
           width: 80,
           height: 80,
         ),
-        title: ("Nhắc nhở"),
+        title: ("reminder".tr),
         activeColorPrimary: AppColor.primary,
         inactiveColorPrimary: Colors.black26,
       ),
       PersistentBottomNavBarItem(
         icon: SvgPicture.asset(IconAssets.iconHome, width: 30, height: 30),
-        title: ("Home"),
+        title: ("home".tr),
         activeColorPrimary: AppColor.primary,
         inactiveColorPrimary: Colors.black26,
       ),
@@ -50,7 +52,7 @@ class _StartAppState extends State<StartApp> {
           width: 80,
           height: 80,
         ),
-        title: ("Thông báo"),
+        title: ("notification".tr),
         activeColorPrimary: AppColor.primary,
         inactiveColorPrimary: Colors.black26,
       ),
@@ -60,7 +62,7 @@ class _StartAppState extends State<StartApp> {
           width: 80,
           height: 80,
         ),
-        title: ("Thông báo"),
+        title: ("setting".tr),
         activeColorPrimary: AppColor.primary,
         inactiveColorPrimary: Colors.black26,
       ),
@@ -73,7 +75,7 @@ class _StartAppState extends State<StartApp> {
       Container(color: Colors.red),
       const HomeScreen(),
       Container(color: Colors.blue),
-      Container(color: Colors.green),
+      const SettingScreen(),
     ];
   }
 

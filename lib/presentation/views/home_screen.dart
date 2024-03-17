@@ -2,7 +2,7 @@
 
 import 'package:counting_love_day/app/configs/config.dart';
 import 'package:counting_love_day/app/util/assets_manager.dart';
-import 'package:counting_love_day/app/util/static_string.dart';
+import 'package:counting_love_day/app/util/language/static_string.dart';
 import 'package:counting_love_day/presentation/components/input.dart';
 import 'package:counting_love_day/presentation/controllers/home_controller.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     Reponsive().setSize(context);
-    StaticString str = StaticString();
+    // StaticString str = StaticString();
 
     Container top = Container(
       width: Reponsive.width,
@@ -56,7 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Input(
               radius: 30,
               _controller.email,
-              "Nhập email người ghép đôi với bạn",
+              "titleFind".tr,
               _controller.isFocus,
               TextInputType.emailAddress,
               hintText: true,
@@ -92,7 +92,7 @@ class _HomeScreenState extends State<HomeScreen> {
       mainAxisAlignment: MainAxisAlignment.end,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Text(str.viewAll),
+        Text('viewAll'.tr),
         const Icon(Icons.arrow_circle_right_outlined),
       ],
     );
@@ -210,7 +210,7 @@ class _HomeScreenState extends State<HomeScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(str.requestAddCouple),
+              Text("requestAddCouple".tr),
               InkWell(
                 onTap: () {
                   Get.bottomSheet(
@@ -267,7 +267,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           ),
                                           child: Center(
                                             child: Text(
-                                              str.addCouple,
+                                              'addCouple'.tr,
                                               style: const TextStyle(
                                                 color: Colors.white,
                                               ),
@@ -302,7 +302,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   child: Center(
                     child: Text(
-                      str.checkButton,
+                      'checkButton'.tr,
                       style: const TextStyle(color: Colors.white),
                     ),
                   ),
@@ -349,7 +349,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         SizedBox(width: Reponsive.width * 0.01),
                         Text(
-                          str.reminder,
+                          "reminder".tr,
                           style: TextStyle(
                             color: AppColor.secondary,
                             fontSize: Reponsive.fontSize * 8,
@@ -358,7 +358,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ],
                     ),
                     Text(
-                      str.commentsReminder,
+                      "commentsReminder".tr,
                       style: TextStyle(color: AppColor.textPurple),
                     ),
                   ],

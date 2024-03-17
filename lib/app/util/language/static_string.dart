@@ -1,4 +1,5 @@
 class StaticString {
+  StaticString();
   //local
   final String userName = 'user_name';
   final String token = 'token';
@@ -10,4 +11,13 @@ class StaticString {
   final String reminder = 'Nhắc nhở';
   final String commentsReminder = 'Đừng quên đằng ấy nhắc gì nha';
   final String addCouple = 'Ghép đôi';
+
+  final String notificationSetting = 'Cài đặt thông báo';
+  final String languageSetting = 'Ngôn ngữ';
+  final String themeSetting = 'Giao diện tối';
+  final String voteSetting = 'Đánh giá';
+  final String shareSetting = 'Chia sẻ';
+  final String disconnectSetting = 'Huỷ kết nối';
+  final String deleteAccountSetting = 'Xoá tài khoản';
+  final String logoutSetting = 'Thoát';
 }

@@ -1,7 +1,7 @@
 #!/bin/sh
 # This is a generated file; do not edit or check into version control.
-export "FLUTTER_ROOT=/Users/pc/fvm/versions/3.7.5"
-export "FLUTTER_APPLICATION_PATH=/Users/pc/coding/bai-tap-lon/counting_love_day"
+export "FLUTTER_ROOT=/Users/macbookairm1/Downloads/flutter"
+export "FLUTTER_APPLICATION_PATH=/Users/macbookairm1/JobDuc/counting_love_day"
 export "COCOAPODS_PARALLEL_CODE_SIGN=true"
 export "FLUTTER_BUILD_DIR=build"
 export "FLUTTER_BUILD_NAME=1.0.0"

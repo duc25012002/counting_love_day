@@ -13,6 +13,14 @@ class HomeController extends GetxController {
   RxString userToken = "".obs;
   RxInt reponseCode = 10.obs;
 
+  // Future<String?> getDataLanguage() async {
+  //   return _userUsecaseImpl.getDataLanguage();
+  // }
+
+  // Future<void> saveDataLanguage(String language) async {
+  //   return _userUsecaseImpl.saveDataLanguage(language);
+  // }
+
   withCheckCouple() async {
     try {
       userToken.value = await _userUsecaseImpl.getUserToken();

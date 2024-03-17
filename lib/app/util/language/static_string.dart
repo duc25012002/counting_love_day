@@ -20,4 +20,6 @@ class StaticString {
   final String disconnectSetting = 'Huỷ kết nối';
   final String deleteAccountSetting = 'Xoá tài khoản';
   final String logoutSetting = 'Thoát';
+  //home screen
+  final String inputEmailHome = 'Nhập email người ghép đôi với bạn';
 }

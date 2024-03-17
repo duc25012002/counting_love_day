@@ -1,4 +1,5 @@
 import 'package:counting_love_day/app/services/log.dart';
+import 'package:counting_love_day/data/models/RequestCoupleModel.dart';
 import 'package:counting_love_day/domain/usecase/couple_usecase.dart';
 import 'package:counting_love_day/domain/usecase/user_usecase.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +13,9 @@ class HomeController extends GetxController {
   RxBool isFocus = false.obs;
   RxString userToken = "".obs;
   RxInt reponseCode = 10.obs;
+  RxInt checkCouple = 0.obs;
+
+  List<RequestCoupleModel> listRequest = [];
 
   // Future<String?> getDataLanguage() async {
   //   return _userUsecaseImpl.getDataLanguage();
@@ -24,10 +28,32 @@ class HomeController extends GetxController {
   withCheckCouple() async {
     try {
       userToken.value = await _userUsecaseImpl.getUserToken();
-      String code =
-          await _coupleUseCaseImpl.checkCouple(token: userToken.value);
-      log.d("Data check Couple:: ${int.tryParse(code)}");
-      reponseCode.value = int.tryParse(code)!;
+      int code = await _coupleUseCaseImpl.checkCouple(token: userToken.value);
+      log.d(code);
+      checkCouple.value = code;
+    } catch (exception) {
+      print(exception.toString());
+    }
+  }
+
+  withGetListRequest() async {
+    try {
+      userToken.value = await _userUsecaseImpl.getUserToken();
+      listRequest =
+          await _coupleUseCaseImpl.getListRequest(token: userToken.value);
+    } catch (exception) {
+      print(exception.toString());
+    }
+  }
+
+  withSendRequest() async {
+    try {
+      userToken.value = await _userUsecaseImpl.getUserToken();
+      int code = await _coupleUseCaseImpl.sendRequestInvite(
+        token: userToken.value,
+        email: email.text,
+      );
+      reponseCode.value = code;
     } catch (exception) {
       print(exception.toString());
     }

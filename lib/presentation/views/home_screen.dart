@@ -1,12 +1,14 @@
-// ignore_for_file: deprecated_member_use, no_leading_underscores_for_local_identifiers, unrelated_type_equality_checks
+// ignore_for_file: deprecated_member_use, no_leading_underscores_for_local_identifiers, unrelated_type_equality_checks, invalid_use_of_protected_member
 
 import 'package:counting_love_day/app/configs/config.dart';
+import 'package:counting_love_day/app/services/log.dart';
 import 'package:counting_love_day/app/util/assets_manager.dart';
 import 'package:counting_love_day/app/util/language/static_string.dart';
 import 'package:counting_love_day/presentation/components/input.dart';
 import 'package:counting_love_day/presentation/controllers/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 
 import '../components/button_premium.dart';
@@ -46,46 +48,77 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
-      child: Stack(
-        children: [
-          Positioned(
-            top: Reponsive.height * 0.05,
-            left: Reponsive.width * 0.1,
-            height: Reponsive.height * 0.08,
-            width: Reponsive.width - 100,
-            child: Input(
-              radius: 30,
-              _controller.email,
-              "titleFind".tr,
-              _controller.isFocus,
-              TextInputType.emailAddress,
-              hintText: true,
-              boder: false,
-              suffix: Padding(
-                padding: EdgeInsets.all(Reponsive.fontSize * 4),
-                child: Container(
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    gradient: LinearGradient(
-                      begin: Alignment.centerLeft,
-                      end: Alignment.centerRight,
-                      colors: [
-                        AppColor.linearGradient1,
-                        AppColor.linearGradient2,
-                      ],
+      child: _controller.checkCouple == 0
+          ? Stack(
+              children: [
+                Positioned(
+                  top: Reponsive.height * 0.05,
+                  left: Reponsive.width * 0.1,
+                  height: Reponsive.height * 0.08,
+                  width: Reponsive.width - 100,
+                  child: Input(
+                    radius: 30,
+                    _controller.email,
+                    "titleFind".tr,
+                    _controller.isFocus,
+                    TextInputType.emailAddress,
+                    hintText: true,
+                    boder: false,
+                    suffix: InkWell(
+                      onTap: () async {
+                        await _controller.withSendRequest();
+                        log.i(_controller.email.text);
+                        if (_controller.reponseCode.value == 0) {
+                          Fluttertoast.showToast(
+                            msg: "Gửi yêu cầu thành công 🥰",
+                          );
+                        } else if (_controller.reponseCode.value == 2) {
+                          Fluttertoast.showToast(
+                            msg: "Bạn có độc thân đâu. Đừng thế chứ 😢",
+                          );
+                        } else if (_controller.reponseCode.value == 3) {
+                          Fluttertoast.showToast(
+                            msg: "Bạn đang gửi yêu cầu 1 bạn khác rồi mà 🥹",
+                          );
+                        } else if (_controller.reponseCode.value == 4) {
+                          Fluttertoast.showToast(
+                            msg: "Bạn ấy không dùng app rồi 😖",
+                          );
+                        } else if (_controller.reponseCode.value == 7) {
+                          Fluttertoast.showToast(
+                            msg: "Hệ thống hiện đang lỗi 🚧",
+                          );
+                        }
+                      },
+                      child: Padding(
+                        padding: EdgeInsets.all(Reponsive.fontSize * 4),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            gradient: LinearGradient(
+                              begin: Alignment.centerLeft,
+                              end: Alignment.centerRight,
+                              colors: [
+                                AppColor.linearGradient1,
+                                AppColor.linearGradient2,
+                              ],
+                            ),
+                          ),
+                          child: SvgPicture.asset(
+                            IconAssets.iconFly,
+                            fit: BoxFit.scaleDown,
+                            width: Reponsive.width * 0.1,
+                          ),
+                        ),
+                      ),
                     ),
                   ),
-                  child: SvgPicture.asset(
-                    IconAssets.iconFly,
-                    fit: BoxFit.scaleDown,
-                    width: Reponsive.width * 0.1,
-                  ),
-                ),
-              ),
+                )
+              ],
+            )
+          : Row(
+              children: const [],
             ),
-          )
-        ],
-      ),
     );
 
     Row viewAll = Row(
@@ -212,18 +245,21 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               Text("requestAddCouple".tr),
               InkWell(
-                onTap: () {
+                onTap: () async {
+                  await _controller.withGetListRequest();
                   Get.bottomSheet(
                     Container(
                       height: Reponsive.height * 0.3,
                       color: Colors.white,
                       child: Center(
                         child: ListView.builder(
-                          itemCount: 10,
+                          itemCount: _controller.listRequest.length,
                           itemBuilder: (context, index) {
                             return Padding(
                               padding: const EdgeInsets.symmetric(
-                                  vertical: 10.0, horizontal: 8),
+                                vertical: 10.0,
+                                horizontal: 8,
+                              ),
                               child: Container(
                                 width: Reponsive.width,
                                 height: Reponsive.height * 0.05,
@@ -247,7 +283,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.center,
                                     children: [
-                                      const Text("ductrieuhoang@gmail.com"),
+                                      Text(
+                                        "${_controller.listRequest[index].userEmail}",
+                                      ),
                                       Padding(
                                         padding: const EdgeInsets.all(8.0),
                                         child: Container(
@@ -405,7 +443,9 @@ class _HomeScreenState extends State<HomeScreen> {
               const Positioned(
                 child: ButtonPremium(),
               ),
-              buttonAddCouple,
+
+              // TODO: button list couple
+              _controller.checkCouple == 0 ? buttonAddCouple : const SizedBox(),
             ],
           ),
         ),

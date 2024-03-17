@@ -1,7 +1,7 @@
 import 'package:counting_love_day/presentation/components/start_app.dart';
 import 'package:counting_love_day/presentation/views/login_screen.dart';
 import 'package:counting_love_day/presentation/views/settings_screen.dart';
-import 'package:counting_love_day/presentation/views/sign_up_screen.dart';
+
 import 'package:counting_love_day/presentation/views/verify_email_screen.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 
@@ -18,10 +18,6 @@ final getPages = [
   GetPage(
     name: Routes.loginScreen,
     page: () => const LoginScreen(),
-  ),
-  GetPage(
-    name: Routes.signUpScreen,
-    page: () => const SignUpScreen(),
   ),
   GetPage(
     name: Routes.verifyEmailScreen,

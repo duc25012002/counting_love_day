@@ -44,7 +44,9 @@ class AuthController extends GetxController {
       } catch (exception) {
         print(exception.toString());
       }
-    } else {}
+    } else {
+      log.i("Can't not empty!");
+    }
   }
 
   withRegister() async {
@@ -69,7 +71,7 @@ class AuthController extends GetxController {
         String code = await _userUsecaseImpl.checkEmail(email: email.text);
         await _userUsecaseImpl.saveUserEmail(email.text);
         log.i(
-          "DATA LOCAL:: ${await _userUsecaseImpl.getUserEmail()}",
+          "[Data local]: ${await _userUsecaseImpl.getUserEmail()}",
         );
         reponseCode.value = int.tryParse(code)!;
       } catch (exception) {
@@ -92,7 +94,7 @@ class AuthController extends GetxController {
       userEmail.value = await _userUsecaseImpl.getUserEmail();
       String code = await _userUsecaseImpl.verifyUserEmail(
           email: userEmail.value, code: pinValue.value);
-      print(int.tryParse(code));
+      log.i(int.tryParse(code));
       reponseCode.value = int.tryParse(code)!;
     } catch (exception) {
       print(exception.toString());
@@ -103,7 +105,7 @@ class AuthController extends GetxController {
     try {
       userEmail.value = await _userUsecaseImpl.getUserEmail();
       String code = await _userUsecaseImpl.resentOtp(email: userEmail.value);
-      log.d(int.tryParse(code));
+      log.i(int.tryParse(code));
       reponseCode.value = int.tryParse(code)!;
     } catch (exception) {
       print(exception.toString());

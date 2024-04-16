@@ -1,4 +1,3 @@
-import 'package:counting_love_day/app/services/log.dart';
 import 'package:counting_love_day/data/repositories/local_datasource_impl.dart';
 import 'package:counting_love_day/data/repositories/user_repository_impl.dart';
 import 'package:get/get.dart';

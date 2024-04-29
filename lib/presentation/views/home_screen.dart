@@ -3,7 +3,6 @@
 import 'package:counting_love_day/app/configs/config.dart';
 import 'package:counting_love_day/app/services/log.dart';
 import 'package:counting_love_day/app/util/assets_manager.dart';
-import 'package:counting_love_day/app/util/language/static_string.dart';
 import 'package:counting_love_day/presentation/components/input.dart';
 import 'package:counting_love_day/presentation/controllers/home_controller.dart';
 import 'package:flutter/material.dart';
@@ -31,8 +30,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     Reponsive().setSize(context);
-    // StaticString str = StaticString();
-
     Container top = Container(
       width: Reponsive.width,
       height: Reponsive.height * 0.2,
@@ -116,20 +113,26 @@ class _HomeScreenState extends State<HomeScreen> {
                 )
               ],
             )
-          : Row(
-              children: const [],
+          : const Row(
+              children: [],
             ),
     );
 
-    Row viewAll = Row(
-      mainAxisAlignment: MainAxisAlignment.end,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Text('viewAll'.tr),
-        const Icon(Icons.arrow_circle_right_outlined),
-      ],
+    dynamic viewAll = Expanded(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Text(
+            'viewAll'.tr,
+            style: const TextStyle(fontSize: 13),
+          ),
+          const Icon(Icons.arrow_circle_right_outlined),
+        ],
+      ),
     );
 
+    // TODO: center
     Container center = Container(
       width: Reponsive.width,
       height: Reponsive.height * 0.3,
@@ -352,6 +355,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
 
+    // TODO: bottom
     Container bottom = Container(
       width: Reponsive.width,
       height: Reponsive.height * 0.3,
@@ -413,8 +417,8 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
 
+    // TODO: main
     return Scaffold(
-      // main--------------------------------------------------------
       backgroundColor: AppColor.background,
       body: SafeArea(
         child: Padding(

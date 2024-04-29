@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names, unused_element
+
 import 'package:flutter/material.dart';
 
 const _icons = "assets/icons";
@@ -26,6 +28,8 @@ class IconAssets {
   static const String iconVote = "$_icons/vote.svg";
 
   static const String lottieCouple = "$_lottie/couple.json";
+
+  static const String ic_default_image = "$_icons/ic_default_image.png";
 }
 
 bool isDarkMode(BuildContext context) {

@@ -30,7 +30,7 @@ const Map<String, String> vi = {
 
 const Map<String, String> en = {
   //homepage
-  'viewAll': 'View All',
+  'viewAll': 'View all',
   'requestAddCouple': 'You received 10 pairing requests',
   'checkButton': 'Check',
   'reminder': 'Reminder',

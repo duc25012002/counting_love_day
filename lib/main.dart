@@ -5,10 +5,8 @@ import 'package:counting_love_day/domain/usecase/bindings_usecase.dart';
 import 'package:counting_love_day/presentation/controllers/settings_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/route_manager.dart';
 
 import 'app/util/language/localization_service.dart';
-import 'presentation/controllers/home_controller.dart';
 
 void main() async {
   BindingsRepositoryImpl().dependencies();

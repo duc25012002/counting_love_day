@@ -9,4 +9,5 @@ abstract class UserRepository {
   });
   Future<void> verifyUserEmail({required String email, required String code});
   Future<void> resendOtp({required String email});
+  
 }

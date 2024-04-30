@@ -4,7 +4,7 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../app/configs/app_color.dart';
 import '../../app/configs/reponsive.dart';
-import '../../app/util/assets_manager.dart';
+import '../../app/util/icon_assets.dart';
 
 class ButtonPremium extends StatelessWidget {
   const ButtonPremium({super.key});

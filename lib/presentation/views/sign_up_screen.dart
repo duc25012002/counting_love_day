@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:counting_love_day/app/configs/app_color.dart';
 import 'package:counting_love_day/app/router/routes.dart';
-import 'package:counting_love_day/app/util/assets_manager.dart';
+import 'package:counting_love_day/app/util/icon_assets.dart';
 import 'package:counting_love_day/presentation/components/input.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';

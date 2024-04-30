@@ -1,6 +1,6 @@
 #!/bin/sh
 # This is a generated file; do not edit or check into version control.
-export "FLUTTER_ROOT=/Users/duc/fvm/versions/stable"
+export "FLUTTER_ROOT=/Users/duc/fvm/versions/3.16.3"
 export "FLUTTER_APPLICATION_PATH=/Users/duc/Documents/project/codetify/counting_love_day"
 export "COCOAPODS_PARALLEL_CODE_SIGN=true"
 export "FLUTTER_BUILD_DIR=build"

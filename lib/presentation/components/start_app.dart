@@ -1,11 +1,14 @@
-import 'package:counting_love_day/app/configs/app_color.dart';
-import 'package:counting_love_day/app/util/assets_manager.dart';
+// ignore_for_file: deprecated_member_use
+
+import 'package:counting_love_day/app/configs/config.dart';
+import 'package:counting_love_day/app/util/icon_assets.dart';
 import 'package:counting_love_day/presentation/views/home_screen.dart';
 import 'package:counting_love_day/presentation/views/settings_screen.dart';
+import 'package:eva_icons_flutter/eva_icons_flutter.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 class StartApp extends StatefulWidget {
@@ -21,21 +24,15 @@ class _StartAppState extends State<StartApp> {
   List<PersistentBottomNavBarItem> _navBarsItems() {
     return [
       PersistentBottomNavBarItem(
-        icon: SvgPicture.asset(
-          IconAssets.iconMemory,
-          width: 80,
-          height: 80,
+        icon: const Icon(
+          CupertinoIcons.memories,
         ),
         title: ("anniversary".tr),
         activeColorPrimary: AppColor.primary,
         inactiveColorPrimary: Colors.black26,
       ),
       PersistentBottomNavBarItem(
-        icon: SvgPicture.asset(
-          IconAssets.iconReminder,
-          width: 80,
-          height: 80,
-        ),
+        icon: const Icon(EvaIcons.clockOutline),
         title: ("reminder".tr),
         activeColorPrimary: AppColor.primary,
         inactiveColorPrimary: Colors.black26,
@@ -47,21 +44,13 @@ class _StartAppState extends State<StartApp> {
         inactiveColorPrimary: Colors.black26,
       ),
       PersistentBottomNavBarItem(
-        icon: SvgPicture.asset(
-          IconAssets.iconNotify,
-          width: 80,
-          height: 80,
-        ),
+        icon: const Icon(EvaIcons.bellOutline),
         title: ("notification".tr),
         activeColorPrimary: AppColor.primary,
         inactiveColorPrimary: Colors.black26,
       ),
       PersistentBottomNavBarItem(
-        icon: SvgPicture.asset(
-          IconAssets.iconSetting,
-          width: 80,
-          height: 80,
-        ),
+        icon: const Icon(EvaIcons.settings),
         title: ("setting".tr),
         activeColorPrimary: AppColor.primary,
         inactiveColorPrimary: Colors.black26,

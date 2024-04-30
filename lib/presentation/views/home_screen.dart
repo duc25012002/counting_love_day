@@ -2,7 +2,7 @@
 
 import 'package:counting_love_day/app/configs/config.dart';
 import 'package:counting_love_day/app/services/log.dart';
-import 'package:counting_love_day/app/util/assets_manager.dart';
+import 'package:counting_love_day/app/util/icon_assets.dart';
 import 'package:counting_love_day/presentation/components/input.dart';
 import 'package:counting_love_day/presentation/controllers/home_controller.dart';
 import 'package:flutter/material.dart';
@@ -306,12 +306,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                               ],
                                             ),
                                           ),
-                                          child: Center(
-                                            child: Text(
-                                              'addCouple'.tr,
-                                              style: const TextStyle(
-                                                color: Colors.white,
-                                              ),
+                                          child: Text(
+                                            'addCouple'.tr,
+                                            textAlign: TextAlign.center,
+                                            style: const TextStyle(
+                                              color: Colors.white,
                                             ),
                                           ),
                                         ),
@@ -358,7 +357,7 @@ class _HomeScreenState extends State<HomeScreen> {
     // TODO: bottom
     Container bottom = Container(
       width: Reponsive.width,
-      height: Reponsive.height * 0.3,
+      height: Reponsive.height * 0.5,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
@@ -410,7 +409,11 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             SizedBox(height: Reponsive.height * 0.02),
             Center(
-              child: SvgPicture.asset(IconAssets.empty),
+              child: SvgPicture.asset(
+                IconAssets.empty,
+                width: Reponsive.width * 0.5,
+                height: Reponsive.height * 0.3,
+              ),
             ),
           ],
         ),

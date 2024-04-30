@@ -13,13 +13,12 @@ void main() async {
   BindingsUsecase().dependencies();
   ManageDependencies().dependencies();
 
-  // await Firebase.initializeApp();
   final SettingController settingController =
       Get.find(tag: "setting_controller");
   String check = await settingController.getDataLanguage() ?? "";
+
   runApp(
     GetMaterialApp(
-      // home: StartApp(),
       translations: LocalizationService(),
       locale: LocalizationService.changeLocale(check),
       fallbackLocale: LocalizationService.fallbackLocale,

@@ -1,6 +1,4 @@
-on: 
-  
-
+on: push
 name: Build APK
 jobs:
   build:

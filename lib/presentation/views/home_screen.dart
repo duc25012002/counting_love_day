@@ -412,7 +412,7 @@ class _HomeScreenState extends State<HomeScreen> {
               child: SvgPicture.asset(
                 IconAssets.empty,
                 width: Reponsive.width * 0.5,
-                height: Reponsive.height * 0.3,
+                height: Reponsive.height * 0.2,
               ),
             ),
           ],

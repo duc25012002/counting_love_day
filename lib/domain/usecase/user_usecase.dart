@@ -1,4 +1,3 @@
-import 'package:counting_love_day/app/services/log.dart';
 import 'package:counting_love_day/data/repositories/local_datasource_impl.dart';
 import 'package:counting_love_day/data/repositories/user_repository_impl.dart';
 import 'package:get/get.dart';
@@ -21,6 +20,8 @@ abstract class UserUsecase {
   Future<dynamic> getUserEmail();
 
   Future<dynamic> getUserToken();
+  // Future<dynamic> getDataLanguage();
+  // Future<dynamic> saveDataLanguage(String language);
 }
 
 class UserUsecaseImpl implements UserUsecase {

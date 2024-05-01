@@ -1,5 +1,5 @@
 import '../../app/services/local_storage.dart';
-import '../../app/util/static_string.dart';
+import '../../app/util/language/static_string.dart';
 
 abstract class LocalDataSource {
   // save data
@@ -13,6 +13,11 @@ abstract class LocalDataSource {
   // get data
   Future<String?> getUserEmail();
   Future<String?> getToken();
+
+  //set data language
+
+  Future<void> getDataLanguage();
+  Future<void> saveDataLanguage(String data);
 }
 
 class LocalDataSourceImpl implements LocalDataSource {
@@ -55,5 +60,17 @@ class LocalDataSourceImpl implements LocalDataSource {
   Future<void> deleteToken() async {
     _localStorageService = await LocalStorageService().init();
     return _localStorageService.deleteData(_staticString.token);
+  }
+
+  @override
+  Future<String?> getDataLanguage() async {
+    _localStorageService = await LocalStorageService().init();
+    return _localStorageService.getData('language');
+  }
+
+  @override
+  Future<void> saveDataLanguage(String data) async {
+    _localStorageService = await LocalStorageService().init();
+    return _localStorageService.saveData('language', data);
   }
 }

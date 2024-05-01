@@ -9,17 +9,13 @@
 .history
 .svn/
 migrate_working_dir/
-Podfile
-Podfile.lock
 flutter_sdk
 fvm_cofig.json
 launch.json
-google-services.json
 *.iml
 *.ipr
 *.iws
 .idea/
-
 
 # Flutter/Dart/Pub related
 **/doc/api/
@@ -42,3 +38,6 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# FVM Version Cache
+.fvm/

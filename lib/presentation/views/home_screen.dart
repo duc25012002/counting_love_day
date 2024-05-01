@@ -1,12 +1,13 @@
-// ignore_for_file: deprecated_member_use, no_leading_underscores_for_local_identifiers, unrelated_type_equality_checks
+// ignore_for_file: deprecated_member_use, no_leading_underscores_for_local_identifiers, unrelated_type_equality_checks, invalid_use_of_protected_member
 
 import 'package:counting_love_day/app/configs/config.dart';
-import 'package:counting_love_day/app/util/assets_manager.dart';
-import 'package:counting_love_day/app/util/static_string.dart';
+import 'package:counting_love_day/app/services/log.dart';
+import 'package:counting_love_day/app/util/icon_assets.dart';
 import 'package:counting_love_day/presentation/components/input.dart';
 import 'package:counting_love_day/presentation/controllers/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 
 import '../components/button_premium.dart';
@@ -29,8 +30,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     Reponsive().setSize(context);
-    StaticString str = StaticString();
-
     Container top = Container(
       width: Reponsive.width,
       height: Reponsive.height * 0.2,
@@ -46,57 +45,94 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
-      child: Stack(
-        children: [
-          Positioned(
-            top: Reponsive.height * 0.05,
-            left: Reponsive.width * 0.1,
-            height: Reponsive.height * 0.08,
-            width: Reponsive.width - 100,
-            child: Input(
-              radius: 30,
-              _controller.email,
-              "Nhập email người ghép đôi với bạn",
-              _controller.isFocus,
-              TextInputType.emailAddress,
-              hintText: true,
-              boder: false,
-              suffix: Padding(
-                padding: EdgeInsets.all(Reponsive.fontSize * 4),
-                child: Container(
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    gradient: LinearGradient(
-                      begin: Alignment.centerLeft,
-                      end: Alignment.centerRight,
-                      colors: [
-                        AppColor.linearGradient1,
-                        AppColor.linearGradient2,
-                      ],
+      child: _controller.checkCouple == 0
+          ? Stack(
+              children: [
+                Positioned(
+                  top: Reponsive.height * 0.05,
+                  left: Reponsive.width * 0.1,
+                  height: Reponsive.height * 0.08,
+                  width: Reponsive.width - 100,
+                  child: Input(
+                    radius: 30,
+                    _controller.email,
+                    "titleFind".tr,
+                    _controller.isFocus,
+                    TextInputType.emailAddress,
+                    hintText: true,
+                    boder: false,
+                    suffix: InkWell(
+                      onTap: () async {
+                        await _controller.withSendRequest();
+                        log.i(_controller.email.text);
+                        if (_controller.reponseCode.value == 0) {
+                          Fluttertoast.showToast(
+                            msg: "Gửi yêu cầu thành công 🥰",
+                          );
+                        } else if (_controller.reponseCode.value == 2) {
+                          Fluttertoast.showToast(
+                            msg: "Bạn có độc thân đâu. Đừng thế chứ 😢",
+                          );
+                        } else if (_controller.reponseCode.value == 3) {
+                          Fluttertoast.showToast(
+                            msg: "Bạn đang gửi yêu cầu 1 bạn khác rồi mà 🥹",
+                          );
+                        } else if (_controller.reponseCode.value == 4) {
+                          Fluttertoast.showToast(
+                            msg: "Bạn ấy không dùng app rồi 😖",
+                          );
+                        } else if (_controller.reponseCode.value == 7) {
+                          Fluttertoast.showToast(
+                            msg: "Hệ thống hiện đang lỗi 🚧",
+                          );
+                        }
+                      },
+                      child: Padding(
+                        padding: EdgeInsets.all(Reponsive.fontSize * 4),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            gradient: LinearGradient(
+                              begin: Alignment.centerLeft,
+                              end: Alignment.centerRight,
+                              colors: [
+                                AppColor.linearGradient1,
+                                AppColor.linearGradient2,
+                              ],
+                            ),
+                          ),
+                          child: SvgPicture.asset(
+                            IconAssets.iconFly,
+                            fit: BoxFit.scaleDown,
+                            width: Reponsive.width * 0.1,
+                          ),
+                        ),
+                      ),
                     ),
                   ),
-                  child: SvgPicture.asset(
-                    IconAssets.iconFly,
-                    fit: BoxFit.scaleDown,
-                    width: Reponsive.width * 0.1,
-                  ),
-                ),
-              ),
+                )
+              ],
+            )
+          : const Row(
+              children: [],
             ),
-          )
+    );
+
+    dynamic viewAll = Expanded(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Text(
+            'viewAll'.tr,
+            style: const TextStyle(fontSize: 13),
+          ),
+          const Icon(Icons.arrow_circle_right_outlined),
         ],
       ),
     );
 
-    Row viewAll = Row(
-      mainAxisAlignment: MainAxisAlignment.end,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Text(str.viewAll),
-        const Icon(Icons.arrow_circle_right_outlined),
-      ],
-    );
-
+    // TODO: center
     Container center = Container(
       width: Reponsive.width,
       height: Reponsive.height * 0.3,
@@ -210,20 +246,23 @@ class _HomeScreenState extends State<HomeScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(str.requestAddCouple),
+              Text("requestAddCouple".tr),
               InkWell(
-                onTap: () {
+                onTap: () async {
+                  await _controller.withGetListRequest();
                   Get.bottomSheet(
                     Container(
                       height: Reponsive.height * 0.3,
                       color: Colors.white,
                       child: Center(
                         child: ListView.builder(
-                          itemCount: 10,
+                          itemCount: _controller.listRequest.length,
                           itemBuilder: (context, index) {
                             return Padding(
                               padding: const EdgeInsets.symmetric(
-                                  vertical: 10.0, horizontal: 8),
+                                vertical: 10.0,
+                                horizontal: 8,
+                              ),
                               child: Container(
                                 width: Reponsive.width,
                                 height: Reponsive.height * 0.05,
@@ -247,7 +286,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.center,
                                     children: [
-                                      const Text("ductrieuhoang@gmail.com"),
+                                      Text(
+                                        "${_controller.listRequest[index].userEmail}",
+                                      ),
                                       Padding(
                                         padding: const EdgeInsets.all(8.0),
                                         child: Container(
@@ -265,12 +306,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                               ],
                                             ),
                                           ),
-                                          child: Center(
-                                            child: Text(
-                                              str.addCouple,
-                                              style: const TextStyle(
-                                                color: Colors.white,
-                                              ),
+                                          child: Text(
+                                            'addCouple'.tr,
+                                            textAlign: TextAlign.center,
+                                            style: const TextStyle(
+                                              color: Colors.white,
                                             ),
                                           ),
                                         ),
@@ -302,7 +342,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   child: Center(
                     child: Text(
-                      str.checkButton,
+                      'checkButton'.tr,
                       style: const TextStyle(color: Colors.white),
                     ),
                   ),
@@ -314,9 +354,10 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
 
+    // TODO: bottom
     Container bottom = Container(
       width: Reponsive.width,
-      height: Reponsive.height * 0.3,
+      height: Reponsive.height * 0.5,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
@@ -349,7 +390,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         SizedBox(width: Reponsive.width * 0.01),
                         Text(
-                          str.reminder,
+                          "reminder".tr,
                           style: TextStyle(
                             color: AppColor.secondary,
                             fontSize: Reponsive.fontSize * 8,
@@ -358,7 +399,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ],
                     ),
                     Text(
-                      str.commentsReminder,
+                      "commentsReminder".tr,
                       style: TextStyle(color: AppColor.textPurple),
                     ),
                   ],
@@ -368,15 +409,19 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             SizedBox(height: Reponsive.height * 0.02),
             Center(
-              child: SvgPicture.asset(IconAssets.empty),
+              child: SvgPicture.asset(
+                IconAssets.empty,
+                width: Reponsive.width * 0.5,
+                height: Reponsive.height * 0.3,
+              ),
             ),
           ],
         ),
       ),
     );
 
+    // TODO: main
     return Scaffold(
-      // main--------------------------------------------------------
       backgroundColor: AppColor.background,
       body: SafeArea(
         child: Padding(
@@ -405,7 +450,9 @@ class _HomeScreenState extends State<HomeScreen> {
               const Positioned(
                 child: ButtonPremium(),
               ),
-              buttonAddCouple,
+
+              // TODO: button list couple
+              _controller.checkCouple == 0 ? buttonAddCouple : const SizedBox(),
             ],
           ),
         ),

@@ -1,13 +1,13 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:counting_love_day/app/configs/app_color.dart';
+import 'package:counting_love_day/app/configs/config_responsive.dart';
 import 'package:counting_love_day/app/router/routes.dart';
-import 'package:counting_love_day/app/util/icon_assets.dart';
+import 'package:counting_love_day/app/util/util_assets.dart';
 import 'package:counting_love_day/presentation/components/input.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
-import '../../app/configs/reponsive.dart';
 import '../controllers/auth_controller.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -23,7 +23,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   Widget build(BuildContext context) {
-    Reponsive().setSize(context);
+    Responsive(context);
     final listInput = <Widget>[
       Input(
         _controller.email,
@@ -58,14 +58,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: SizedBox(
-            width: Reponsive.width,
-            height: Reponsive.height,
+            width: Responsive.width,
+            height: Responsive.height,
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
                 Lottie.asset(
                   IconAssets.lottieCouple,
-                  height: Reponsive.height / 2.5,
+                  height: Responsive.height / 2.5,
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -75,7 +75,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       Text(
                         "Bắt đầu nào",
                         style: TextStyle(
-                          fontSize: Reponsive.fontSize * 13,
+                          fontSize: Responsive.fontSize * 13,
                           color: Colors.black,
                           fontWeight: FontWeight.w700,
                         ),
@@ -83,7 +83,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       Text(
                         "Đăng ký để bắt đầu sử dụng Kapo",
                         style: TextStyle(
-                          fontSize: Reponsive.fontSize * 8,
+                          fontSize: Responsive.fontSize * 8,
                           color: Colors.black,
                           fontWeight: FontWeight.w300,
                         ),
@@ -93,7 +93,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
                 const Spacer(),
                 SizedBox(
-                  height: Reponsive.height / 2.5,
+                  height: Responsive.height / 2.5,
                   child: Column(
                     children: [
                       CarouselSlider(

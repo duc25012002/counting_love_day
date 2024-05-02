@@ -1,7 +1,7 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:counting_love_day/app/configs/config.dart';
-import 'package:counting_love_day/app/util/icon_assets.dart';
+import 'package:counting_love_day/app/util/util_assets.dart';
 import 'package:counting_love_day/presentation/views/home_screen.dart';
 import 'package:counting_love_day/presentation/views/settings_screen.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';

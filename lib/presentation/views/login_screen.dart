@@ -1,7 +1,7 @@
 // ignore_for_file: no_leading_underscores_for_local_identifiers, unrelated_type_equality_checks, non_constant_identifier_names
 
 import 'package:counting_love_day/app/configs/app_color.dart';
-import 'package:counting_love_day/app/configs/reponsive.dart';
+import 'package:counting_love_day/app/configs/config_responsive.dart';
 import 'package:counting_love_day/app/router/routes.dart';
 import 'package:counting_love_day/presentation/components/input.dart';
 import 'package:counting_love_day/presentation/controllers/auth_controller.dart';
@@ -15,7 +15,7 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Reponsive().setSize(context);
+    Responsive.setSize(context);
     AuthController _controller = Get.find(tag: "auth_controller");
     final HomeController _homeController = Get.find(tag: "home_controller");
 
@@ -29,18 +29,18 @@ class LoginScreen extends StatelessWidget {
             Stack(
               children: [
                 SizedBox(
-                  width: Reponsive.width,
-                  height: Reponsive.height,
+                  width: Responsive.width,
+                  height: Responsive.height,
                   child: CustomPaint(
-                    painter: PaintLine(Reponsive.height),
+                    painter: PaintLine(Responsive.height),
                   ),
                 ),
                 Positioned(
-                  top: Reponsive.height * 0.25,
-                  left: Reponsive.width * 0.05,
+                  top: Responsive.height * 0.25,
+                  left: Responsive.width * 0.05,
                   child: Container(
-                    width: Reponsive.width * 0.9,
-                    height: Reponsive.height * 0.6,
+                    width: Responsive.width * 0.9,
+                    height: Responsive.height * 0.6,
                     decoration: const BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.all(Radius.circular(20)),
@@ -61,19 +61,19 @@ class LoginScreen extends StatelessWidget {
                           Text(
                             "Sign in ❤️",
                             style: TextStyle(
-                              fontSize: Reponsive.fontSize * 8,
+                              fontSize: Responsive.fontSize * 8,
                               fontWeight: FontWeight.w400,
                             ),
                           ),
-                          SizedBox(height: Reponsive.height * 0.05),
+                          SizedBox(height: Responsive.height * 0.05),
                           _formLogin(
                             _controller.formKey,
                             _controller,
                             _homeController,
                           ),
-                          SizedBox(height: Reponsive.height * 0.02),
+                          SizedBox(height: Responsive.height * 0.02),
                           SizedBox(
-                            width: Reponsive.width,
+                            width: Responsive.width,
                             child: Text(
                               "Forgot your password?",
                               textAlign: TextAlign.center,
@@ -83,12 +83,12 @@ class LoginScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          SizedBox(height: Reponsive.height * 0.02),
+                          SizedBox(height: Responsive.height * 0.02),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               SizedBox(
-                                width: Reponsive.width / 4,
+                                width: Responsive.width / 4,
                                 child: Divider(
                                   height: 10,
                                   color: AppColor.silver,
@@ -100,7 +100,7 @@ class LoginScreen extends StatelessWidget {
                                 child: Text("or use"),
                               ),
                               SizedBox(
-                                width: Reponsive.width / 4,
+                                width: Responsive.width / 4,
                                 child: Divider(
                                   height: 10,
                                   color: AppColor.silver,
@@ -109,7 +109,7 @@ class LoginScreen extends StatelessWidget {
                               ),
                             ],
                           ),
-                          SizedBox(height: Reponsive.height * 0.02),
+                          SizedBox(height: Responsive.height * 0.02),
                           Center(
                             child: InkWell(
                               onTap: () => Get.toNamed(Routes.signUpScreen),
@@ -160,7 +160,7 @@ class LoginScreen extends StatelessWidget {
         () => Column(
           children: [
             SizedBox(
-              height: Reponsive.height * 0.1,
+              height: Responsive.height * 0.1,
               child: Input(
                 _controller.userName,
                 "User name",
@@ -175,9 +175,9 @@ class LoginScreen extends StatelessWidget {
                 },
               ),
             ),
-            SizedBox(height: Reponsive.height * 0.01),
+            SizedBox(height: Responsive.height * 0.01),
             SizedBox(
-              height: Reponsive.height * 0.1,
+              height: Responsive.height * 0.1,
               child: Input(
                 _controller.password,
                 "Password",
@@ -192,7 +192,7 @@ class LoginScreen extends StatelessWidget {
                 },
               ),
             ),
-            SizedBox(height: Reponsive.height * 0.02),
+            SizedBox(height: Responsive.height * 0.02),
             ElevatedButton(
               onPressed: () async {
                 if (_formKey.currentState!.validate()) {
@@ -222,7 +222,7 @@ class LoginScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(5.0),
                 ),
                 backgroundColor: AppColor.primary,
-                fixedSize: Size(Reponsive.width, Reponsive.height * 0.06),
+                fixedSize: Size(Responsive.width, Responsive.height * 0.06),
               ),
               child: const Text(
                 "Login",

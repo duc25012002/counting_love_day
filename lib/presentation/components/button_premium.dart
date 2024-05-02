@@ -1,25 +1,27 @@
-import 'package:counting_love_day/app/services/log.dart';
+// ignore_for_file: deprecated_member_use
+
+import 'package:counting_love_day/app/configs/config_responsive.dart';
+import 'package:counting_love_day/app/util/util_log.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../app/configs/app_color.dart';
-import '../../app/configs/reponsive.dart';
-import '../../app/util/icon_assets.dart';
+import '../../app/util/util_assets.dart';
 
 class ButtonPremium extends StatelessWidget {
   const ButtonPremium({super.key});
 
   @override
   Widget build(BuildContext context) {
-    Reponsive().setSize(context);
+    Responsive.setSize(context);
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Container(
-          width: Reponsive.width * 0.6,
-          height: Reponsive.height * 0.04,
+          width: Responsive.width * 0.6,
+          height: Responsive.height * 0.04,
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(10),
@@ -48,7 +50,7 @@ class ButtonPremium extends StatelessWidget {
                         text: "Get ",
                         style: TextStyle(
                           color: AppColor.textPurple,
-                          fontSize: Reponsive.fontSize * 5,
+                          fontSize: Responsive.fontSize * 5,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
@@ -56,7 +58,7 @@ class ButtonPremium extends StatelessWidget {
                         text: "Kapo Premium",
                         style: TextStyle(
                           color: AppColor.actionColor,
-                          fontSize: Reponsive.fontSize * 5,
+                          fontSize: Responsive.fontSize * 5,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
@@ -64,7 +66,7 @@ class ButtonPremium extends StatelessWidget {
                         text: " now ",
                         style: TextStyle(
                           color: AppColor.textPurple,
-                          fontSize: Reponsive.fontSize * 5,
+                          fontSize: Responsive.fontSize * 5,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
@@ -72,7 +74,7 @@ class ButtonPremium extends StatelessWidget {
                         text: "→",
                         style: TextStyle(
                           color: AppColor.actionColor,
-                          fontSize: Reponsive.fontSize * 5,
+                          fontSize: Responsive.fontSize * 5,
                           fontWeight: FontWeight.w600,
                         ),
                       ),

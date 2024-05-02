@@ -1,4 +1,4 @@
-import 'package:counting_love_day/app/services/log.dart';
+import 'package:counting_love_day/app/util/util_log.dart';
 import 'package:counting_love_day/data/models/RequestCoupleModel.dart';
 import 'package:counting_love_day/domain/usecase/couple_usecase.dart';
 import 'package:counting_love_day/domain/usecase/user_usecase.dart';

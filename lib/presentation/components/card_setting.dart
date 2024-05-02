@@ -1,10 +1,9 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:counting_love_day/app/configs/app_color.dart';
+import 'package:counting_love_day/app/configs/config_responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
-import '../../app/configs/reponsive.dart';
 
 CardSetting(
   String label,
@@ -20,17 +19,17 @@ CardSetting(
       // ignore: sort_child_properties_last
       child: Row(
         children: [
-          SizedBox(width: Reponsive.width * 0.02),
+          SizedBox(width: Responsive.width * 0.02),
           SvgPicture.asset(
             icon,
             color: AppColor.colorGrey,
           ),
-          SizedBox(width: Reponsive.width * 0.02),
+          SizedBox(width: Responsive.width * 0.02),
           Text(label),
         ],
       ),
-      width: Reponsive.width * 0.82,
-      height: Reponsive.height * 0.06,
+      width: Responsive.width * 0.82,
+      height: Responsive.height * 0.06,
       decoration: BoxDecoration(
         border: const Border(
           bottom: BorderSide(

@@ -1,7 +1,7 @@
 import 'package:counting_love_day/domain/usecase/user_usecase.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../app/services/log.dart';
+import '../../app/util/util_log.dart';
 
 class AuthController extends GetxController {
   final UserUsecaseImpl _userUsecaseImpl = Get.find(tag: "auth");

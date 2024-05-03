@@ -1,6 +1,6 @@
 // ignore_for_file: overridden_fields, file_names
 
-import 'package:counting_love_day/domain/entities/RequestCoupleEntity.dart';
+import 'package:counting_love_day/domain/entities/request_couple_entity.dart';
 
 class RequestCoupleModel extends RequestCoupleEntity {
   RequestCoupleModel({

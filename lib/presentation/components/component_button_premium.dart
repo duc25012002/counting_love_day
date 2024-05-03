@@ -5,7 +5,7 @@ import 'package:counting_love_day/app/util/util_log.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../app/configs/app_color.dart';
+import '../../app/configs/config_app_color.dart';
 import '../../app/util/util_assets.dart';
 
 class ButtonPremium extends StatelessWidget {

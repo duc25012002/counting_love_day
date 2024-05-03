@@ -1,9 +1,9 @@
 // ignore_for_file: no_leading_underscores_for_local_identifiers, unrelated_type_equality_checks, non_constant_identifier_names
 
-import 'package:counting_love_day/app/configs/app_color.dart';
+import 'package:counting_love_day/app/configs/config_app_color.dart';
 import 'package:counting_love_day/app/configs/config_responsive.dart';
 import 'package:counting_love_day/app/router/routes.dart';
-import 'package:counting_love_day/presentation/components/input.dart';
+import 'package:counting_love_day/presentation/components/component_input.dart';
 import 'package:counting_love_day/presentation/controllers/auth_controller.dart';
 import 'package:counting_love_day/presentation/controllers/home_controller.dart';
 import 'package:flutter/material.dart';

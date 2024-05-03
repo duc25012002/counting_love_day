@@ -3,15 +3,15 @@
 import 'package:counting_love_day/app/configs/config_responsive.dart';
 import 'package:counting_love_day/app/router/routes.dart';
 import 'package:counting_love_day/app/util/util_assets.dart';
-import 'package:counting_love_day/presentation/components/card_setting.dart';
+import 'package:counting_love_day/presentation/components/component_card_setting.dart';
 import 'package:counting_love_day/presentation/controllers/settings_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
-import '../../app/configs/app_color.dart';
+import '../../app/configs/config_app_color.dart';
 import '../../app/util/language/localization_service.dart';
-import '../components/button_premium.dart';
+import '../components/component_button_premium.dart';
 
 class SettingScreen extends StatefulWidget {
   const SettingScreen({super.key});

@@ -1,7 +1,7 @@
 import 'package:counting_love_day/app/router/routes.dart';
 import 'package:counting_love_day/app/util/util_depedency.dart';
 import 'package:counting_love_day/data/repositories/binding/bindings_repo_impl.dart';
-import 'package:counting_love_day/domain/usecase/bindings_usecase.dart';
+import 'package:counting_love_day/domain/usecases/bindings_usecase.dart';
 import 'package:counting_love_day/presentation/controllers/settings_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

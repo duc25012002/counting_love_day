@@ -1,4 +1,4 @@
-import 'package:counting_love_day/domain/usecase/setting_usecase.dart';
+import 'package:counting_love_day/domain/usecases/setting_usecase.dart';
 import 'package:get/get.dart';
 
 class SettingController extends GetxController {

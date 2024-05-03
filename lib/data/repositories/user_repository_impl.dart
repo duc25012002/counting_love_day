@@ -2,7 +2,7 @@
 import 'package:counting_love_day/data/datasource/apis/dio_client.dart';
 import 'package:dio/dio.dart';
 
-import '../../app/configs/api_config.dart';
+import '../../app/configs/config_api.dart';
 import '../../app/core/internet_services.dart';
 import '../../domain/repositories/user_repository.dart';
 

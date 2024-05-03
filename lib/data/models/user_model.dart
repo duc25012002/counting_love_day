@@ -2,7 +2,7 @@
 
 import 'dart:convert';
 
-import 'package:counting_love_day/domain/entities/UserEntity.dart';
+import 'package:counting_love_day/domain/entities/user_entity.dart';
 
 class UserModel extends UserEntity {
   UserModel({

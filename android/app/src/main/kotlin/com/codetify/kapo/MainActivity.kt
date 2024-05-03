@@ -1,4 +1,4 @@
-package com.example.counting_love_day
+package com.codetify.kapo
 
 import io.flutter.embedding.android.FlutterActivity
 

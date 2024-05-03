@@ -1,6 +1,6 @@
 // ignore_for_file: deprecated_member_use
 
-import 'package:counting_love_day/app/configs/config.dart';
+import 'package:counting_love_day/app/configs/config_export.dart';
 import 'package:counting_love_day/app/util/util_assets.dart';
 import 'package:counting_love_day/presentation/views/home_screen.dart';
 import 'package:counting_love_day/presentation/views/settings_screen.dart';
@@ -11,13 +11,13 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
-class StartApp extends StatefulWidget {
-  const StartApp({super.key});
+class BottomNavigationBar extends StatefulWidget {
+  const BottomNavigationBar({super.key});
   @override
-  State<StartApp> createState() => _StartAppState();
+  State<BottomNavigationBar> createState() => _BottomNavigationBarState();
 }
 
-class _StartAppState extends State<StartApp> {
+class _BottomNavigationBarState extends State<BottomNavigationBar> {
   final PersistentTabController _controller =
       PersistentTabController(initialIndex: 2);
 

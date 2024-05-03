@@ -1,16 +1,16 @@
 // ignore_for_file: deprecated_member_use, no_leading_underscores_for_local_identifiers, unrelated_type_equality_checks, invalid_use_of_protected_member
 
-import 'package:counting_love_day/app/configs/config.dart';
+import 'package:counting_love_day/app/configs/config_export.dart';
 import 'package:counting_love_day/app/util/util_assets.dart';
 import 'package:counting_love_day/app/util/util_log.dart';
-import 'package:counting_love_day/presentation/components/input.dart';
+import 'package:counting_love_day/presentation/components/component_input.dart';
 import 'package:counting_love_day/presentation/controllers/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 
-import '../components/button_premium.dart';
+import '../components/component_button_premium.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

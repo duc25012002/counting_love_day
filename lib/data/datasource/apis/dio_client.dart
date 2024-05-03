@@ -2,8 +2,8 @@
 import 'package:counting_love_day/data/repositories/local_datasource_impl.dart';
 import 'package:dio/dio.dart';
 import 'package:xml/xml.dart';
-import '../../../app/configs/api_config.dart' as url;
-import '../../../app/configs/api_config.dart';
+import '../../../app/configs/config_api.dart' as url;
+import '../../../app/configs/config_api.dart';
 import '../../../app/util/util_log.dart';
 
 class DioClient {

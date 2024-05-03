@@ -2,7 +2,7 @@
 
 import 'dart:async';
 
-import 'package:counting_love_day/app/configs/app_color.dart';
+import 'package:counting_love_day/app/configs/config_app_color.dart';
 import 'package:counting_love_day/app/configs/config_responsive.dart';
 import 'package:counting_love_day/app/router/routes.dart';
 import 'package:flutter/material.dart';

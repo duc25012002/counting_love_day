@@ -1,9 +1,9 @@
 // ignore_for_file: deprecated_member_use
-import 'package:counting_love_day/data/models/RequestCoupleModel.dart';
+import 'package:counting_love_day/data/models/request_couple_model.dart';
 import 'package:counting_love_day/domain/repositories/couple_repository.dart';
 import 'package:dio/dio.dart';
 
-import '../../app/configs/api_config.dart';
+import '../../app/configs/config_api.dart';
 import '../../app/core/internet_services.dart';
 import '../datasource/apis/dio_client.dart';
 

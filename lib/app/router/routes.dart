@@ -1,4 +1,4 @@
-import 'package:counting_love_day/presentation/components/start_app.dart';
+import 'package:counting_love_day/presentation/components/compotnent_bottom_nav_bar.dart';
 import 'package:counting_love_day/presentation/views/login_screen.dart';
 import 'package:counting_love_day/presentation/views/settings_screen.dart';
 import 'package:counting_love_day/presentation/views/sign_up_screen.dart';
@@ -26,7 +26,7 @@ final getPages = [
   ),
   GetPage(
     name: Routes.homeScreen,
-    page: () => const StartApp(),
+    page: () => const BottomNavigationBar(),
   ),
   GetPage(
     name: Routes.settingsScreen,
@@ -34,7 +34,7 @@ final getPages = [
   ),
   GetPage(
     name: Routes.startApp,
-    page: () => const StartApp(),
+    page: () => const BottomNavigationBar(),
   ),
   GetPage(
     name: Routes.signUpScreen,

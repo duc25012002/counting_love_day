@@ -1,7 +1,7 @@
 import 'package:counting_love_day/app/util/util_log.dart';
-import 'package:counting_love_day/data/models/RequestCoupleModel.dart';
-import 'package:counting_love_day/domain/usecase/couple_usecase.dart';
-import 'package:counting_love_day/domain/usecase/user_usecase.dart';
+import 'package:counting_love_day/data/models/request_couple_model.dart';
+import 'package:counting_love_day/domain/usecases/couple_usecase.dart';
+import 'package:counting_love_day/domain/usecases/user_usecase.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

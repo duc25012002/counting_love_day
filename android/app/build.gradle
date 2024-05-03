@@ -52,7 +52,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.example.counting_love_day"
+        applicationId "com.codetify.kapo"
         minSdkVersion 21
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()

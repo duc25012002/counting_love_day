@@ -1,6 +1,6 @@
-import 'package:counting_love_day/domain/usecase/couple_usecase.dart';
-import 'package:counting_love_day/domain/usecase/setting_usecase.dart';
-import 'package:counting_love_day/domain/usecase/user_usecase.dart';
+import 'package:counting_love_day/domain/usecases/couple_usecase.dart';
+import 'package:counting_love_day/domain/usecases/setting_usecase.dart';
+import 'package:counting_love_day/domain/usecases/user_usecase.dart';
 import 'package:get/get.dart';
 
 class BindingsUsecase extends Bindings {

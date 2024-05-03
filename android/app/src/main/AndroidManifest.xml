@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.counting_love_day">
+    package="com.codetify.kapo">
    <application
         android:label="counting_love_day"
         android:name="${applicationName}"

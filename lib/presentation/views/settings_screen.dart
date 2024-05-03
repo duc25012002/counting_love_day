@@ -1,7 +1,8 @@
-// ignore_for_file: deprecated_member_use
+// ignore_for_file: deprecated_member_use, unused_local_variable
 
+import 'package:counting_love_day/app/configs/config_responsive.dart';
 import 'package:counting_love_day/app/router/routes.dart';
-import 'package:counting_love_day/app/util/icon_assets.dart';
+import 'package:counting_love_day/app/util/util_assets.dart';
 import 'package:counting_love_day/presentation/components/card_setting.dart';
 import 'package:counting_love_day/presentation/controllers/settings_controller.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +10,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 import '../../app/configs/app_color.dart';
-import '../../app/configs/reponsive.dart';
 import '../../app/util/language/localization_service.dart';
 import '../components/button_premium.dart';
 
@@ -24,122 +24,118 @@ class _SettingScreenState extends State<SettingScreen> {
   final SettingController _controller = Get.find(tag: "setting_controller");
   @override
   Widget build(BuildContext context) {
-    Reponsive().setSize(context);
-    List listSetting = [
-      {
-        "title": "notificationSettin".tr,
-        "icon": IconAssets.iconNotification,
-        "border": "all",
-        "function": () {}
-      },
-      {
-        "title": "languageSetting".tr,
-        "icon": IconAssets.iconLanguage,
-        "border": "top",
-        "function": () {
-          Get.dialog(
-            SimpleDialog(
-              title: Center(child: Text('selectLanguage'.tr)),
-              children: [
-                SimpleDialogOption(
-                  onPressed: () {
-                    LocalizationService.changeLocale("vi");
-
-                    _controller.saveDataLanguage("vi");
-                    Get.back();
-                  },
-                  child: Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(),
-                      //color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text('viet'.tr),
-                    ),
-                  ),
-                ),
-                SimpleDialogOption(
-                  onPressed: () {
-                    LocalizationService.changeLocale("en");
-
-                    _controller.saveDataLanguage("en");
-                    Get.back();
-                  },
-                  child: Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(),
-                      //color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text('anh'.tr),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          );
-        }
-      },
-      {
-        "title": "themeSetting".tr,
-        "icon": IconAssets.iconMoon,
-        "border": "bottom",
-        "function": () {
-          Get.changeTheme(
-            Get.isDarkMode ? ThemeData.light() : ThemeData.dark(),
-          );
-        },
-      },
-      {
-        "title": "shareSetting".tr,
-        "icon": IconAssets.iconShare,
-        "border": "bottom",
-        "function": () {
-          Get.dialog(
-            AlertDialog(
-              title: const Text('Chia sẻ ứng dụng'),
-              content: const Text('facebook.com'),
-              actions: [
-                TextButton(
-                  onPressed: () {
-                    Get.back();
-                  },
-                  child: const Text('Close'),
-                ),
-              ],
-            ),
-          );
-        },
-      },
-      {
-        "title": "disconnectSetting".tr,
-        "icon": IconAssets.iconDisconect,
-        "border": "all",
-        "function": () {}
-      },
-      {
-        "title": "deleteAccountSetting".tr,
-        "icon": IconAssets.iconDelete,
-        "border": "all",
-        "function": () {}
-      },
-      {
-        "title": "logoutSetting".tr,
-        "icon": IconAssets.iconLogout,
-        "border": "all",
-        "function": () {
-          Get.offAllNamed(Routes.loginScreen);
-        },
-      }
-    ];
+    final Responsive responsive = Responsive(context);
+    // List listSetting = [
+    //   {
+    //     "title": "notificationSettin".tr,
+    //     "icon": IconAssets.iconNotification,
+    //     "border": "all",
+    //     "function": () {}
+    //   },
+    //   {
+    //     "title": "languageSetting".tr,
+    //     "icon": IconAssets.iconLanguage,
+    //     "border": "top",
+    //     "function": () {
+    //       Get.dialog(
+    //         SimpleDialog(
+    //           title: Center(child: Text('selectLanguage'.tr)),
+    //           children: [
+    //             SimpleDialogOption(
+    //               onPressed: () {
+    //                 LocalizationService.changeLocale("vi");
+    //                 _controller.saveDataLanguage("vi");
+    //                 Get.back();
+    //               },
+    //               child: Container(
+    //                 decoration: BoxDecoration(
+    //                   border: Border.all(),
+    //                   borderRadius: BorderRadius.circular(10),
+    //                 ),
+    //                 child: Padding(
+    //                   padding: const EdgeInsets.all(8.0),
+    //                   child: Text('viet'.tr),
+    //                 ),
+    //               ),
+    //             ),
+    //             SimpleDialogOption(
+    //               onPressed: () {
+    //                 LocalizationService.changeLocale("en");
+    //                 _controller.saveDataLanguage("en");
+    //                 Get.back();
+    //               },
+    //               child: Container(
+    //                 decoration: BoxDecoration(
+    //                   border: Border.all(),
+    //                   borderRadius: BorderRadius.circular(10),
+    //                 ),
+    //                 child: Padding(
+    //                   padding: const EdgeInsets.all(8.0),
+    //                   child: Text('anh'.tr),
+    //                 ),
+    //               ),
+    //             ),
+    //           ],
+    //         ),
+    //       );
+    //     }
+    //   },
+    //   {
+    //     "title": "themeSetting".tr,
+    //     "icon": IconAssets.iconMoon,
+    //     "border": "bottom",
+    //     "function": () {
+    //       Get.changeTheme(
+    //         Get.isDarkMode ? ThemeData.light() : ThemeData.dark(),
+    //       );
+    //     },
+    //   },
+    //   {
+    //     "title": "shareSetting".tr,
+    //     "icon": IconAssets.iconShare,
+    //     "border": "bottom",
+    //     "function": () {
+    //       Get.dialog(
+    //         AlertDialog(
+    //           title: const Text('Chia sẻ ứng dụng'),
+    //           content: const Text('facebook.com'),
+    //           actions: [
+    //             TextButton(
+    //               onPressed: () {
+    //                 Get.back();
+    //               },
+    //               child: const Text('Close'),
+    //             ),
+    //           ],
+    //         ),
+    //       );
+    //     },
+    //   },
+    //   {
+    //     "title": "disconnectSetting".tr,
+    //     "icon": IconAssets.iconDisconect,
+    //     "border": "all",
+    //     "function": () {}
+    //   },
+    //   {
+    //     "title": "deleteAccountSetting".tr,
+    //     "icon": IconAssets.iconDelete,
+    //     "border": "all",
+    //     "function": () {}
+    //   },
+    //   {
+    //     "title": "logoutSetting".tr,
+    //     "icon": IconAssets.iconLogout,
+    //     "border": "all",
+    //     "function": () {
+    //       Get.offAllNamed(Routes.loginScreen);
+    //     },
+    //   }
+    // ];
 
     Container top = Container(
-      width: Reponsive.width * 0.9,
-      height: Reponsive.height * 0.22,
+      width: Responsive.width * 0.9,
+      height: Responsive.height * 0.22,
       decoration: BoxDecoration(
         color: isDarkMode(context)
             ? const Color.fromARGB(255, 76, 76, 76)
@@ -168,16 +164,16 @@ class _SettingScreenState extends State<SettingScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Text("Username"),
-              SizedBox(height: Reponsive.height * 0.01),
+              responsive.gapH(0.01),
               const Text("0123456789"),
-              SizedBox(height: Reponsive.height * 0.01),
+              responsive.gapH(0.01),
               const Text("Heromm@gmail.com"),
-              SizedBox(height: Reponsive.height * 0.01),
+              responsive.gapH(0.01),
               InkWell(
                 onTap: () {},
                 child: Container(
-                  height: Reponsive.width * 0.06,
-                  width: Reponsive.width * 0.4,
+                  height: Responsive.width * 0.06,
+                  width: Responsive.width * 0.4,
                   decoration: BoxDecoration(
                     color: AppColor.actionColor,
                     borderRadius: BorderRadius.circular(15),
@@ -197,8 +193,8 @@ class _SettingScreenState extends State<SettingScreen> {
       ),
     );
     Container center = Container(
-      width: Reponsive.width * 0.92,
-      height: Reponsive.height * 0.5,
+      width: Responsive.width * 0.92,
+      height: Responsive.height * 0.5,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(20),
@@ -216,14 +212,14 @@ class _SettingScreenState extends State<SettingScreen> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(height: Reponsive.height * 0.03),
+              responsive.gapH(0.03),
               CardSetting(
                 'notificationSetting'.tr,
                 IconAssets.iconNotification,
                 "all",
                 () {},
               ),
-              SizedBox(height: Reponsive.height * 0.02),
+              responsive.gapH(0.02),
               CardSetting(
                 "languageSetting".tr,
                 IconAssets.iconLanguage,
@@ -255,7 +251,6 @@ class _SettingScreenState extends State<SettingScreen> {
                         SimpleDialogOption(
                           onPressed: () {
                             LocalizationService.changeLocale("en");
-
                             _controller.saveDataLanguage("en");
                             Get.back();
                           },
@@ -285,7 +280,7 @@ class _SettingScreenState extends State<SettingScreen> {
                       Get.isDarkMode ? ThemeData.light() : ThemeData.dark());
                 },
               ),
-              SizedBox(height: Reponsive.height * 0.02),
+              responsive.gapH(0.02),
               CardSetting("voteSetting".tr, IconAssets.iconVote, "top", () {}),
               CardSetting(
                 "shareSetting".tr,
@@ -308,21 +303,21 @@ class _SettingScreenState extends State<SettingScreen> {
                   );
                 },
               ),
-              SizedBox(height: Reponsive.height * 0.02),
+              responsive.gapH(0.02),
               CardSetting(
                 "disconnectSetting".tr,
                 IconAssets.iconDisconect,
                 "all",
                 () {},
               ),
-              SizedBox(height: Reponsive.height * 0.01),
+              responsive.gapH(0.01),
               CardSetting(
                 "deleteAccountSetting".tr,
                 IconAssets.iconDelete,
                 "all",
                 () {},
               ),
-              SizedBox(height: Reponsive.height * 0.02),
+              responsive.gapH(0.02),
               CardSetting(
                 "logoutSetting".tr,
                 IconAssets.iconLogout,
@@ -331,7 +326,7 @@ class _SettingScreenState extends State<SettingScreen> {
                   Get.offAllNamed(Routes.loginScreen);
                 },
               ),
-              SizedBox(height: Reponsive.height * 0.02),
+              responsive.gapH(0.02),
             ],
           ),
         ),
@@ -352,13 +347,12 @@ class _SettingScreenState extends State<SettingScreen> {
                     children: [
                       Column(
                         children: [
-                          SizedBox(height: Reponsive.height * 0.02),
                           const ButtonPremium(),
-                          SizedBox(height: Reponsive.height * 0.01),
+                          responsive.gapH(0.01),
                           top,
-                          SizedBox(height: Reponsive.height * 0.02),
+                          responsive.gapH(0.02),
                           center,
-                          SizedBox(height: Reponsive.height * 0.02),
+                          responsive.gapH(0.01),
                         ],
                       ),
                     ],

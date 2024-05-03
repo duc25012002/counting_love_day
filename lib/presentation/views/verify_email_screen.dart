@@ -3,12 +3,12 @@
 import 'dart:async';
 
 import 'package:counting_love_day/app/configs/app_color.dart';
+import 'package:counting_love_day/app/configs/config_responsive.dart';
 import 'package:counting_love_day/app/router/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:pinput/pinput.dart';
-import '../../app/configs/reponsive.dart';
 import '../controllers/auth_controller.dart';
 
 class VerifyEmailScreen extends StatefulWidget {
@@ -39,7 +39,7 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
 
   @override
   Widget build(BuildContext context) {
-    Reponsive().setSize(context);
+    Responsive.setSize(context);
 
     @override
     void initState() {
@@ -61,10 +61,10 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
                   Text(
                     "Sắp xong rồi !",
                     style: TextStyle(
-                        fontSize: Reponsive.fontSize * 10,
+                        fontSize: Responsive.fontSize * 10,
                         fontWeight: FontWeight.w600),
                   ),
-                  SizedBox(height: Reponsive.height * 0.05),
+                  SizedBox(height: Responsive.height * 0.05),
                   RichText(
                     text: TextSpan(
                       children: [
@@ -86,7 +86,7 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
                   ),
                 ],
               ),
-              SizedBox(height: Reponsive.height * 0.05),
+              SizedBox(height: Responsive.height * 0.05),
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -101,11 +101,11 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
                       },
                     ),
                   ),
-                  SizedBox(height: Reponsive.height * 0.05),
+                  SizedBox(height: Responsive.height * 0.05),
                   buttonAccept(_controller, startTimer),
-                  SizedBox(height: Reponsive.height * 0.05),
+                  SizedBox(height: Responsive.height * 0.05),
                   resetOtp(_controller),
-                  SizedBox(height: Reponsive.height * 0.02),
+                  SizedBox(height: Responsive.height * 0.02),
                   timeRequest(_controller)
                 ],
               ),
@@ -119,8 +119,8 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
   Container buttonAccept(
       AuthController _controller, void Function() startTimer) {
     return Container(
-      width: Reponsive.width,
-      height: Reponsive.height * 0.06,
+      width: Responsive.width,
+      height: Responsive.height * 0.06,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(100.0),
       ),
@@ -145,7 +145,7 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
         ),
         child: Text(
           "Xác minh",
-          style: TextStyle(fontSize: Reponsive.fontSize * 6),
+          style: TextStyle(fontSize: Responsive.fontSize * 6),
         ),
       ),
     );

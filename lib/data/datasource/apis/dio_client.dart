@@ -4,7 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:xml/xml.dart';
 import '../../../app/configs/api_config.dart' as url;
 import '../../../app/configs/api_config.dart';
-import '../../../app/services/log.dart';
+import '../../../app/util/util_log.dart';
 
 class DioClient {
   /// ProgressCallback? onSendProgress, theo dõi tiến trình gửi đi

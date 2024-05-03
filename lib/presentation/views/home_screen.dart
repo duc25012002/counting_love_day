@@ -1,8 +1,8 @@
 // ignore_for_file: deprecated_member_use, no_leading_underscores_for_local_identifiers, unrelated_type_equality_checks, invalid_use_of_protected_member
 
 import 'package:counting_love_day/app/configs/config.dart';
-import 'package:counting_love_day/app/services/log.dart';
-import 'package:counting_love_day/app/util/icon_assets.dart';
+import 'package:counting_love_day/app/util/util_assets.dart';
+import 'package:counting_love_day/app/util/util_log.dart';
 import 'package:counting_love_day/presentation/components/input.dart';
 import 'package:counting_love_day/presentation/controllers/home_controller.dart';
 import 'package:flutter/material.dart';
@@ -29,10 +29,11 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    Reponsive().setSize(context);
+    Responsive responsive = Responsive(context);
+
     Container top = Container(
-      width: Reponsive.width,
-      height: Reponsive.height * 0.2,
+      width: Responsive.width,
+      height: Responsive.height * 0.2,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
@@ -49,10 +50,10 @@ class _HomeScreenState extends State<HomeScreen> {
           ? Stack(
               children: [
                 Positioned(
-                  top: Reponsive.height * 0.05,
-                  left: Reponsive.width * 0.1,
-                  height: Reponsive.height * 0.08,
-                  width: Reponsive.width - 100,
+                  top: Responsive.height * 0.05,
+                  left: responsive.onePersentHeight,
+                  height: Responsive.height * 0.08,
+                  width: Responsive.width - 100,
                   child: Input(
                     radius: 30,
                     _controller.email,
@@ -88,7 +89,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         }
                       },
                       child: Padding(
-                        padding: EdgeInsets.all(Reponsive.fontSize * 4),
+                        padding: EdgeInsets.all(Responsive.fontSize * 4),
                         child: Container(
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
@@ -104,7 +105,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: SvgPicture.asset(
                             IconAssets.iconFly,
                             fit: BoxFit.scaleDown,
-                            width: Reponsive.width * 0.1,
+                            width: Responsive.width * 0.1,
                           ),
                         ),
                       ),
@@ -134,8 +135,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
     // TODO: center
     Container center = Container(
-      width: Reponsive.width,
-      height: Reponsive.height * 0.3,
+      width: Responsive.width,
+      height: Responsive.height * 0.3,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
@@ -153,13 +154,13 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           children: [
             viewAll,
-            SizedBox(height: Reponsive.height * 0.02),
+            SizedBox(height: Responsive.height * 0.02),
             Row(
               children: [
                 Expanded(
                   child: Container(
-                    width: Reponsive.width * 0.5,
-                    height: Reponsive.height * 0.21,
+                    width: Responsive.width * 0.5,
+                    height: Responsive.height * 0.21,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       color: AppColor.colorGrey,
@@ -173,8 +174,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Container(
-                          width: Reponsive.width,
-                          height: Reponsive.height * 0.1,
+                          width: Responsive.width,
+                          height: Responsive.height * 0.1,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             color: AppColor.colorGrey,
@@ -188,8 +189,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                 child: Padding(
                                   padding: const EdgeInsets.only(right: 8),
                                   child: Container(
-                                    width: Reponsive.width,
-                                    height: Reponsive.height * 0.1,
+                                    width: Responsive.width,
+                                    height: Responsive.height * 0.1,
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(10),
                                       color: AppColor.colorGrey,
@@ -199,8 +200,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               Expanded(
                                 child: Container(
-                                  width: Reponsive.width,
-                                  height: Reponsive.height * 0.1,
+                                  width: Responsive.width,
+                                  height: Responsive.height * 0.1,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10),
                                     color: AppColor.colorGrey,
@@ -222,12 +223,12 @@ class _HomeScreenState extends State<HomeScreen> {
     );
 
     Positioned buttonAddCouple = Positioned(
-      top: Reponsive.height * 0.75,
+      top: Responsive.height * 0.75,
       left: 0,
       right: 0,
       child: Container(
-        width: Reponsive.width,
-        height: Reponsive.height * 0.05,
+        width: Responsive.width,
+        height: Responsive.height * 0.05,
         decoration: BoxDecoration(
           color: AppColor.bgrButtonCouple,
           borderRadius: BorderRadius.circular(10),
@@ -252,7 +253,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   await _controller.withGetListRequest();
                   Get.bottomSheet(
                     Container(
-                      height: Reponsive.height * 0.3,
+                      height: Responsive.height * 0.3,
                       color: Colors.white,
                       child: Center(
                         child: ListView.builder(
@@ -264,8 +265,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                 horizontal: 8,
                               ),
                               child: Container(
-                                width: Reponsive.width,
-                                height: Reponsive.height * 0.05,
+                                width: Responsive.width,
+                                height: Responsive.height * 0.05,
                                 decoration: BoxDecoration(
                                   boxShadow: [
                                     BoxShadow(
@@ -292,8 +293,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                       Padding(
                                         padding: const EdgeInsets.all(8.0),
                                         child: Container(
-                                          width: Reponsive.width * 0.2,
-                                          height: Reponsive.height * 0.1,
+                                          width: Responsive.width * 0.2,
+                                          height: Responsive.height * 0.1,
                                           decoration: BoxDecoration(
                                             borderRadius:
                                                 BorderRadius.circular(20),
@@ -327,8 +328,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   );
                 },
                 child: Container(
-                  width: Reponsive.width * 0.2,
-                  height: Reponsive.height * 0.1,
+                  width: Responsive.width * 0.2,
+                  height: Responsive.height * 0.1,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     gradient: LinearGradient(
@@ -356,8 +357,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
     // TODO: bottom
     Container bottom = Container(
-      width: Reponsive.width,
-      height: Reponsive.height * 0.5,
+      width: Responsive.width,
+      height: Responsive.height * 0.5,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
@@ -388,12 +389,12 @@ class _HomeScreenState extends State<HomeScreen> {
                           Icons.receipt_sharp,
                           color: AppColor.secondary,
                         ),
-                        SizedBox(width: Reponsive.width * 0.01),
+                        SizedBox(width: Responsive.width * 0.01),
                         Text(
                           "reminder".tr,
                           style: TextStyle(
                             color: AppColor.secondary,
-                            fontSize: Reponsive.fontSize * 8,
+                            fontSize: Responsive.fontSize * 8,
                           ),
                         ),
                       ],
@@ -407,12 +408,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 viewAll
               ],
             ),
-            SizedBox(height: Reponsive.height * 0.02),
+            SizedBox(height: Responsive.height * 0.02),
             Center(
               child: SvgPicture.asset(
                 IconAssets.empty,
-                width: Reponsive.width * 0.5,
-                height: Reponsive.height * 0.3,
+                width: Responsive.width * 0.5,
+                height: Responsive.height * 0.2,
               ),
             ),
           ],
@@ -434,13 +435,13 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: [
                       Column(
                         children: [
-                          SizedBox(height: Reponsive.height * 0.06),
+                          SizedBox(height: Responsive.height * 0.06),
                           top,
-                          SizedBox(height: Reponsive.height * 0.02),
+                          SizedBox(height: Responsive.height * 0.02),
                           center,
-                          SizedBox(height: Reponsive.height * 0.02),
+                          SizedBox(height: Responsive.height * 0.02),
                           bottom,
-                          SizedBox(height: Reponsive.height * 0.15),
+                          SizedBox(height: Responsive.height * 0.15),
                         ],
                       ),
                     ],

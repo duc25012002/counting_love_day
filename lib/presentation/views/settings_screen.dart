@@ -10,7 +10,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 import '../../app/configs/config_app_color.dart';
-import '../../app/util/language/localization_service.dart';
+import '../../app/services/language/localization_service.dart';
 import '../components/component_button_premium.dart';
 
 class SettingScreen extends StatefulWidget {
@@ -214,17 +214,17 @@ class _SettingScreenState extends State<SettingScreen> {
             children: [
               responsive.gapH(0.03),
               CardSetting(
-                'notificationSetting'.tr,
-                IconAssets.iconNotification,
-                "all",
-                () {},
+                label: 'notificationSetting'.tr,
+                icon: IconAssets.iconNotification,
+                circularDirect: "all",
+                functionButton: () {},
               ),
               responsive.gapH(0.02),
               CardSetting(
-                "languageSetting".tr,
-                IconAssets.iconLanguage,
-                "top",
-                () {
+                label: "languageSetting".tr,
+                icon: IconAssets.iconLanguage,
+                circularDirect: "top",
+                functionButton: () {
                   Get.dialog(
                     SimpleDialog(
                       title: Center(child: Text('selectLanguage'.tr)),
@@ -232,7 +232,6 @@ class _SettingScreenState extends State<SettingScreen> {
                         SimpleDialogOption(
                           onPressed: () {
                             LocalizationService.changeLocale("vi");
-
                             _controller.saveDataLanguage("vi");
                             Get.back();
                           },
@@ -272,21 +271,26 @@ class _SettingScreenState extends State<SettingScreen> {
                 },
               ),
               CardSetting(
-                "themeSetting".tr,
-                IconAssets.iconMoon,
-                "bottom",
-                () {
+                label: "themeSetting".tr,
+                icon: IconAssets.iconMoon,
+                circularDirect: "bottom",
+                functionButton: () {
                   Get.changeTheme(
                       Get.isDarkMode ? ThemeData.light() : ThemeData.dark());
                 },
               ),
               responsive.gapH(0.02),
-              CardSetting("voteSetting".tr, IconAssets.iconVote, "top", () {}),
               CardSetting(
-                "shareSetting".tr,
-                IconAssets.iconShare,
-                "bottom",
-                () {
+                label: "voteSetting".tr,
+                icon: IconAssets.iconVote,
+                circularDirect: "top",
+                functionButton: () {},
+              ),
+              CardSetting(
+                label: "shareSetting".tr,
+                icon: IconAssets.iconShare,
+                circularDirect: "bottom",
+                functionButton: () {
                   Get.dialog(
                     AlertDialog(
                       title: const Text('Chia sẻ ứng dụng'),
@@ -305,24 +309,24 @@ class _SettingScreenState extends State<SettingScreen> {
               ),
               responsive.gapH(0.02),
               CardSetting(
-                "disconnectSetting".tr,
-                IconAssets.iconDisconect,
-                "all",
-                () {},
+                label: "disconnectSetting".tr,
+                icon: IconAssets.iconDisconect,
+                circularDirect: "all",
+                functionButton: () {},
               ),
               responsive.gapH(0.01),
               CardSetting(
-                "deleteAccountSetting".tr,
-                IconAssets.iconDelete,
-                "all",
-                () {},
+                label: "deleteAccountSetting".tr,
+                icon: IconAssets.iconDelete,
+                circularDirect: "all",
+                functionButton: () {},
               ),
               responsive.gapH(0.02),
               CardSetting(
-                "logoutSetting".tr,
-                IconAssets.iconLogout,
-                "all",
-                () {
+                label: "logoutSetting".tr,
+                icon: IconAssets.iconLogout,
+                circularDirect: "all",
+                functionButton: () {
                   Get.offAllNamed(Routes.loginScreen);
                 },
               ),

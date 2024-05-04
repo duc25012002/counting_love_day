@@ -1,6 +1,6 @@
 import 'dart:collection';
 
-import 'package:counting_love_day/app/util/language/translate_vi_vn.dart';
+import 'package:counting_love_day/app/services/language/translate_vi_vn.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

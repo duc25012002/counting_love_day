@@ -389,7 +389,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           Icons.receipt_sharp,
                           color: AppColor.secondary,
                         ),
-                        SizedBox(width: Responsive.width * 0.01),
+                        responsive.gapH(0.01),
                         Text(
                           "reminder".tr,
                           style: TextStyle(
@@ -408,7 +408,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 viewAll
               ],
             ),
-            SizedBox(height: Responsive.height * 0.02),
+            responsive.gapH10(),
             Center(
               child: SvgPicture.asset(
                 IconAssets.empty,

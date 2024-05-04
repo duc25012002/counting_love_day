@@ -6,7 +6,7 @@ import 'package:counting_love_day/presentation/controllers/settings_controller.d
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'app/util/language/localization_service.dart';
+import 'app/services/language/localization_service.dart';
 
 void main() async {
   BindingsRepositoryImpl().dependencies();

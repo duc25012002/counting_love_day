@@ -9,12 +9,9 @@
 .history
 .svn/
 migrate_working_dir/
-Podfile
-Podfile.lock
 flutter_sdk
 fvm_cofig.json
 launch.json
-google-services.json
 *.iml
 *.ipr
 *.iws

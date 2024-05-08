@@ -64,7 +64,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               mainAxisSize: MainAxisSize.max,
               children: [
                 Lottie.asset(
-                  IconAssets.lottieCouple,
+                  Assets.lottieCouple,
                   height: Responsive.height / 2.5,
                 ),
                 Padding(

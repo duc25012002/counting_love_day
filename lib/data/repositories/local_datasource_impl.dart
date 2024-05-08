@@ -1,4 +1,4 @@
-import '../../app/services/service_local_storage.dart';
+import '../../app/services/local/service_local_storage.dart';
 import '../../app/services/language/static_string.dart';
 
 abstract class LocalDataSource {

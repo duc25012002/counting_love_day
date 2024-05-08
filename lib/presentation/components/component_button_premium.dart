@@ -42,7 +42,7 @@ class ButtonPremium extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Image.asset(IconAssets.iconPremium),
+                Image.asset(Assets.iconPremium),
                 RichText(
                   text: TextSpan(
                     children: [
@@ -88,7 +88,7 @@ class ButtonPremium extends StatelessWidget {
         CircleAvatar(
           radius: 20,
           child: SvgPicture.asset(
-            IconAssets.iconUser,
+            Assets.iconUser,
             width: 50,
             height: 50,
             color: Colors.white,

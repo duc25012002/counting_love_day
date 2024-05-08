@@ -22,7 +22,7 @@ CardSetting({
         children: [
           SizedBox(width: Responsive.width * 0.02),
           SvgPicture.asset(
-            icon ?? IconAssets.ic_default_image,
+            icon ?? Assets.ic_default_image,
             color: AppColor.colorGrey,
           ),
           SizedBox(width: Responsive.width * 0.02),

@@ -39,7 +39,7 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
 
   @override
   Widget build(BuildContext context) {
-    Responsive.setSize(context);
+    Responsive responsive = Responsive(context);
 
     @override
     void initState() {
@@ -64,7 +64,7 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
                         fontSize: Responsive.fontSize * 10,
                         fontWeight: FontWeight.w600),
                   ),
-                  SizedBox(height: Responsive.height * 0.05),
+                  responsive.gapH5(),
                   RichText(
                     text: TextSpan(
                       children: [
@@ -86,7 +86,7 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
                   ),
                 ],
               ),
-              SizedBox(height: Responsive.height * 0.05),
+              responsive.gapH5(),
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -101,11 +101,11 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
                       },
                     ),
                   ),
-                  SizedBox(height: Responsive.height * 0.05),
+                  responsive.gapH5(),
                   buttonAccept(_controller, startTimer),
-                  SizedBox(height: Responsive.height * 0.05),
+                  responsive.gapH5(),
                   resetOtp(_controller),
-                  SizedBox(height: Responsive.height * 0.02),
+                  responsive.gapH(0.02),
                   timeRequest(_controller)
                 ],
               ),

@@ -1,16 +1,17 @@
-// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: non_constant_identifier_names, deprecated_member_use
 
 import 'package:counting_love_day/app/configs/config_app_color.dart';
 import 'package:counting_love_day/app/configs/config_responsive.dart';
+import 'package:counting_love_day/app/util/util_assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-CardSetting(
-  String label,
-  String icon,
-  String circularDirect,
+CardSetting({
+  String? label,
+  String? icon,
+  String? circularDirect,
   functionButton,
-) {
+}) {
   return InkWell(
     onTap: () {
       functionButton();
@@ -21,11 +22,11 @@ CardSetting(
         children: [
           SizedBox(width: Responsive.width * 0.02),
           SvgPicture.asset(
-            icon,
+            icon ?? Assets.ic_default_image,
             color: AppColor.colorGrey,
           ),
           SizedBox(width: Responsive.width * 0.02),
-          Text(label),
+          Text(label ?? ""),
         ],
       ),
       width: Responsive.width * 0.82,
@@ -38,7 +39,7 @@ CardSetting(
             style: BorderStyle.solid, // Kiểu của viền (solid, dashed, dotted)
           ),
         ),
-        color: const Color.fromARGB(255, 243, 243, 243),
+        color: const Color.fromARGB(255, 237, 234, 234),
         borderRadius: circularDirect != "all"
             ? circularDirect != "top"
                 ? const BorderRadius.only(

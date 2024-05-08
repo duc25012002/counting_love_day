@@ -15,7 +15,7 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Responsive.setSize(context);
+    Responsive responsive = Responsive(context);
     AuthController _controller = Get.find(tag: "auth_controller");
     final HomeController _homeController = Get.find(tag: "home_controller");
 
@@ -65,13 +65,14 @@ class LoginScreen extends StatelessWidget {
                               fontWeight: FontWeight.w400,
                             ),
                           ),
-                          SizedBox(height: Responsive.height * 0.05),
+                          responsive.gapH5(),
                           _formLogin(
                             _controller.formKey,
                             _controller,
                             _homeController,
+                            responsive,
                           ),
-                          SizedBox(height: Responsive.height * 0.02),
+                          responsive.gapH(0.02),
                           SizedBox(
                             width: Responsive.width,
                             child: Text(
@@ -83,7 +84,7 @@ class LoginScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          SizedBox(height: Responsive.height * 0.02),
+                          responsive.gapH(0.02),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -153,6 +154,7 @@ class LoginScreen extends StatelessWidget {
     GlobalKey<FormState> _formKey,
     AuthController _controller,
     HomeController _homeController,
+    Responsive responsive,
   ) {
     return Form(
       key: _formKey,
@@ -175,7 +177,7 @@ class LoginScreen extends StatelessWidget {
                 },
               ),
             ),
-            SizedBox(height: Responsive.height * 0.01),
+            responsive.gapH(0.01),
             SizedBox(
               height: Responsive.height * 0.1,
               child: Input(
@@ -192,7 +194,7 @@ class LoginScreen extends StatelessWidget {
                 },
               ),
             ),
-            SizedBox(height: Responsive.height * 0.02),
+            responsive.gapH(0.02),
             ElevatedButton(
               onPressed: () async {
                 if (_formKey.currentState!.validate()) {

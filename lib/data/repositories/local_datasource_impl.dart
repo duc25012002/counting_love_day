@@ -1,5 +1,5 @@
-import '../../app/services/local_storage.dart';
-import '../../app/util/language/static_string.dart';
+import '../../app/services/local/service_local_storage.dart';
+import '../../app/services/language/static_string.dart';
 
 abstract class LocalDataSource {
   // save data

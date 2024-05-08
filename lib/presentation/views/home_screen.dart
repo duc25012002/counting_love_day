@@ -103,7 +103,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                           ),
                           child: SvgPicture.asset(
-                            IconAssets.iconFly,
+                            Assets.iconFly,
                             fit: BoxFit.scaleDown,
                             width: Responsive.width * 0.1,
                           ),
@@ -411,7 +411,7 @@ class _HomeScreenState extends State<HomeScreen> {
             responsive.gapH10(),
             Center(
               child: SvgPicture.asset(
-                IconAssets.empty,
+                Assets.empty,
                 width: Responsive.width * 0.5,
                 height: Responsive.height * 0.2,
               ),

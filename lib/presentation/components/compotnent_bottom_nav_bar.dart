@@ -38,7 +38,7 @@ class _BottomNavigationBarState extends State<BottomNavigationBar> {
         inactiveColorPrimary: Colors.black26,
       ),
       PersistentBottomNavBarItem(
-        icon: SvgPicture.asset(IconAssets.iconHome, width: 30, height: 30),
+        icon: SvgPicture.asset(Assets.iconHome, width: 30, height: 30),
         title: ("home".tr),
         activeColorPrimary: AppColor.primary,
         inactiveColorPrimary: Colors.black26,

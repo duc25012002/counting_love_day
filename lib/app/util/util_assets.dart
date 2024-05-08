@@ -7,7 +7,7 @@ const _images = "";
 const _lottie = "assets/lotties";
 const _font = "";
 
-class IconAssets {
+class Assets {
   static const String iconUser = "$_icons/icon_user.svg";
   static const String iconMemory = "$_icons/icon_memory.svg";
   static const String iconReminder = "$_icons/icon_reminder.svg";
@@ -29,6 +29,10 @@ class IconAssets {
   static const String lottieCouple = "$_lottie/couple.json";
 
   static const String ic_default_image = "$_icons/ic_default_image.png";
+
+  static const String ic_heart_border = "$_icons/icon_heart_border.png";
+  static const String ic_heart_half = "$_icons/icon_heart_half.png";
+  static const String ic_heart = "$_icons/icon_heart.png";
 }
 
 bool isDarkMode(BuildContext context) {

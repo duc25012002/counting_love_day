@@ -22,7 +22,7 @@ CardSetting({
         children: [
           SizedBox(width: Responsive.width * 0.02),
           SvgPicture.asset(
-            icon ?? IconAssets.ic_default_image,
+            icon ?? Assets.ic_default_image,
             color: AppColor.colorGrey,
           ),
           SizedBox(width: Responsive.width * 0.02),
@@ -39,7 +39,7 @@ CardSetting({
             style: BorderStyle.solid, // Kiểu của viền (solid, dashed, dotted)
           ),
         ),
-        color: const Color.fromARGB(255, 243, 243, 243),
+        color: const Color.fromARGB(255, 237, 234, 234),
         borderRadius: circularDirect != "all"
             ? circularDirect != "top"
                 ? const BorderRadius.only(

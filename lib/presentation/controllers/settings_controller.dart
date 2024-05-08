@@ -11,4 +11,5 @@ class SettingController extends GetxController {
   Future<void> saveDataLanguage(String language) async {
     return _settingUsecaseImpl.saveDataLanguage(language);
   }
+  
 }

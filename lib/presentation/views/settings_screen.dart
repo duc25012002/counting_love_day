@@ -180,35 +180,65 @@ class _SettingScreenState extends State<SettingScreen> {
                 icon: Assets.iconVote,
                 circularDirect: "top",
                 functionButton: () {
-                  RatingBar(
-                    initialRating: 3,
-                    direction: Axis.horizontal,
-                    allowHalfRating: true,
-                    itemCount: 5,
-                    ratingWidget: RatingWidget(
-                      full: Image.asset(
-                        Assets.ic_heart,
-                        height: 30.0,
-                        width: 30.0,
-                        color: Colors.amber,
-                      ),
-                      half: Image.asset(
-                        Assets.ic_heart_half,
-                        height: 30.0,
-                        width: 30.0,
-                        color: Colors.amber,
-                      ),
-                      empty: Image.asset(
-                        Assets.ic_heart_border,
-                        height: 30.0,
-                        width: 30.0,
-                        color: Colors.amber,
+                  Get.defaultDialog(
+                    title: "Vui lòng cho Kapo xin ý kiến nha",
+                    titleStyle: TextStyle(
+                      fontSize: Responsive.fontSize * 8,
+                      color: Colors.black,
+                    ),
+                    confirm: ElevatedButton(
+                      onPressed: () {
+                        Get.back();
+                      },
+                      child: const Text("Xác nhận"),
+                    ),
+                    content: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 15),
+                      child: Center(
+                        child: SizedBox(
+                          width: Responsive.width,
+                          height: Responsive.height / 6,
+                          child: Column(
+                            children: [
+                              Center(
+                                child: RatingBar(
+                                  initialRating: 4.5,
+                                  direction: Axis.horizontal,
+                                  allowHalfRating: true,
+                                  itemCount: 5,
+                                  ratingWidget: RatingWidget(
+                                    full: Image.asset(
+                                      Assets.ic_heart,
+                                      height: 30.0,
+                                      width: 30.0,
+                                      color: Colors.amber,
+                                    ),
+                                    half: Image.asset(
+                                      Assets.ic_heart_half,
+                                      height: 30.0,
+                                      width: 30.0,
+                                      color: Colors.amber,
+                                    ),
+                                    empty: Image.asset(
+                                      Assets.ic_heart_border,
+                                      height: 30.0,
+                                      width: 30.0,
+                                      color: Colors.amber,
+                                    ),
+                                  ),
+                                  itemPadding: const EdgeInsets.symmetric(
+                                    horizontal: 4.0,
+                                  ),
+                                  onRatingUpdate: (rating) {
+                                    print(rating);
+                                  },
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
                     ),
-                    itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
-                    onRatingUpdate: (rating) {
-                      print(rating);
-                    },
                   );
                 },
               ),
@@ -218,7 +248,8 @@ class _SettingScreenState extends State<SettingScreen> {
                 circularDirect: "bottom",
                 functionButton: () async {
                   final result = await Share.share(
-                      'check out my website https://example.com');
+                    'check out my website https://example.com',
+                  );
                 },
               ),
               responsive.gapH(0.02),
